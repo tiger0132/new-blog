@@ -197,7 +197,7 @@ Analytics"></a></div></noscript>
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">23</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">25</span></a>
 
   </li>
       
@@ -223,7 +223,7 @@ Analytics"></a></div></noscript>
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">15</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">16</span></a>
 
   </li>
       
@@ -283,6 +283,129 @@ Analytics"></a></div></noscript>
           <div id="content" class="content page-home">
             
   <section id="posts" class="posts-expand">
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://noi.solutions/2019/10/01/gxoi-gzoi2019-sol/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tiger0132">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tiger0132 的小站">
+    </span>
+      <header class="post-header">
+
+        
+          <h2 class="post-title" itemprop="name headline">
+              
+              <a href="/2019/10/01/gxoi-gzoi2019-sol/" class="post-title-link" itemprop="url">「GXOI / GZOI 2019」题解 (1 / 6)</a>
+            
+          </h2>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-10-01 00:15:58" itemprop="dateCreated datePublished" datetime="2019-10-01T00:15:58+08:00">2019-10-01</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-02 13:16:24" itemprop="dateModified" datetime="2019-10-02T13:16:24+08:00">2019-10-02</time>
+              </span>
+            
+          
+
+          
+            
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/10/01/gxoi-gzoi2019-sol/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/01/gxoi-gzoi2019-sol/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <h1 id="逼死强迫症">逼死强迫症</h1>
+<h2 id="题意">题意</h2>
+<p>求用两个 <span class="math inline">\(1\times1\)</span> 正方形和 <span class="math inline">\(n-1\)</span> 个 <span class="math inline">\(1\times2\)</span> 长方形铺满 <span class="math inline">\(2\times n\)</span> 长方形棋盘的方案数 <span class="math inline">\(\bmod(10^9+7)\)</span>，且两个 <span class="math inline">\(1\times1\)</span> 正方形没有公共边。</p>
+<p><span class="math inline">\(1\le n\le2\times10^9,T\le500\)</span>。</p>
+<h2 id="解法">解法</h2>
+<p>令 <span class="math inline">\(f_i\)</span> 为填满 <span class="math inline">\(2\times n\)</span> 长方形的方案数。</p>
+<p>按照其中一个 <span class="math inline">\(1\times1\)</span> 正方形是否放置在最后一列讨论，可以得到递推式 <span class="math inline">\(\displaystyle f_n=f_{n-1}+f_{n-2}+2\sum_{i=1}^{n-2}g_i\)</span>，其中 <span class="math inline">\(g_i\)</span> 为用 <span class="math inline">\(1\times2\)</span> 长方形铺满 <span class="math inline">\(2\times n\)</span> 棋盘的方案数。</p>
+<p>根据 <span class="math inline">\(\sum_{i=0}^nfib_i=fib_{n+2}-1\)</span>，可以将递推式变形为 <span class="math inline">\(f_n=f_{n-1}+f_{n-2}+2g_n-2\)</span>，然后矩阵快速幂求解即可。</p>
+<h1 id="与或和">与或和</h1>
+<h2 id="题意-1">题意</h2>
+<p>给一个 <span class="math inline">\(n\times n\)</span> 的矩阵 <span class="math inline">\(a\)</span>，求它所有子矩阵的与和的和，和它所有子矩阵的或和的和 <span class="math inline">\(\bmod(10^9+7)\)</span>。</p>
+<p><span class="math inline">\(1\le n\le10^3,0\le\max a\le2^{31}-1\)</span>。</p>
+<h2 id="解法-1">解法</h2>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+          
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+      
+    
       
         
 
@@ -384,105 +507,6 @@ Analytics"></a></div></noscript>
           <!--noindex-->
           
           <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-      
-    
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://noi.solutions/2019/09/28/sgt-notes/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="tiger0132">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tiger0132 的小站">
-    </span>
-      <header class="post-header">
-
-        
-          <h2 class="post-title" itemprop="name headline">
-              
-              <a href="/2019/09/28/sgt-notes/" class="post-title-link" itemprop="url">sgt-notes</a>
-            
-          </h2>
-        
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              
-              
-
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-09-28 21:34:46" itemprop="dateCreated datePublished" datetime="2019-09-28T21:34:46+08:00">2019-09-28</time>
-            </span>
-          
-
-          
-            
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/09/28/sgt-notes/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/09/28/sgt-notes/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-            
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
-          
         
       
     </div>
@@ -1391,7 +1415,7 @@ Analytics"></a></div></noscript>
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1473,7 +1497,11 @@ Analytics"></a></div></noscript>
         
           
         
-        <span class="site-state-item-count">23</span>
+          
+        
+          
+        
+        <span class="site-state-item-count">25</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>

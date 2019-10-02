@@ -56,15 +56,19 @@
   };
 </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="标签">
-<meta property="og:url" content="https://noi.solutions/tags/index.html">
+  <meta name="description" content="逼死强迫症 题意 求用两个 \(1\times1\) 正方形和 \(n-1\) 个 \(1\times2\) 长方形铺满 \(2\times n\) 长方形棋盘的方案数 \(\bmod(10^9+7)\)，且两个 \(1\times1\) 正方形没有公共边。 \(1\le n\le2\times10^9,T\le500\)。 解法 令 \(f_i\) 为填满 \(2\times n\) 长方形的方">
+<meta name="keywords" content="GXOI,GZOI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「GXOI &#x2F; GZOI 2019」题解 (1 &#x2F; 6)">
+<meta property="og:url" content="https://noi.solutions/2019/10/01/gxoi-gzoi2019-sol/index.html">
 <meta property="og:site_name" content="Tiger0132 的小站">
+<meta property="og:description" content="逼死强迫症 题意 求用两个 \(1\times1\) 正方形和 \(n-1\) 个 \(1\times2\) 长方形铺满 \(2\times n\) 长方形棋盘的方案数 \(\bmod(10^9+7)\)，且两个 \(1\times1\) 正方形没有公共边。 \(1\le n\le2\times10^9,T\le500\)。 解法 令 \(f_i\) 为填满 \(2\times n\) 长方形的方">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-12T23:17:51.136Z">
+<meta property="og:updated_time" content="2019-10-02T05:16:24.916Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="标签">
-  <link rel="canonical" href="https://noi.solutions/tags/">
+<meta name="twitter:title" content="「GXOI &#x2F; GZOI 2019」题解 (1 &#x2F; 6)">
+<meta name="twitter:description" content="逼死强迫症 题意 求用两个 \(1\times1\) 正方形和 \(n-1\) 个 \(1\times2\) 长方形铺满 \(2\times n\) 长方形棋盘的方案数 \(\bmod(10^9+7)\)，且两个 \(1\times1\) 正方形没有公共边。 \(1\le n\le2\times10^9,T\le500\)。 解法 令 \(f_i\) 为填满 \(2\times n\) 长方形的方">
+  <link rel="canonical" href="https://noi.solutions/2019/10/01/gxoi-gzoi2019-sol/">
 
 
 <script id="page-configurations">
@@ -72,13 +76,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
-    isPage: true,
+    isPost: true,
+    isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>标签 | Tiger0132 的小站</title>
+  <title>「GXOI / GZOI 2019」题解 (1 / 6) | Tiger0132 的小站</title>
   
 
 
@@ -281,184 +285,190 @@ Analytics"></a></div></noscript>
         <div class="content-wrap">
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
           <div id="content" class="content page-post-detail">
             
 
   <div id="posts" class="posts-expand">
     
-    
-    
-    <div class="post-block page">
+    <div class="reading-progress-bar"></div>
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://noi.solutions/2019/10/01/gxoi-gzoi2019-sol/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tiger0132">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tiger0132 的小站">
+    </span>
       <header class="post-header">
 
-<h2 class="post-title" itemprop="name headline">标签
+        
+          <h2 class="post-title" itemprop="name headline">「GXOI / GZOI 2019」题解 (1 / 6)
 
-</h2>
+            
+          </h2>
+        
 
-<div class="post-meta">
+        <div class="post-meta">
+            <span class="post-meta-item">
+              
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-10-01 00:15:58" itemprop="dateCreated datePublished" datetime="2019-10-01T00:15:58+08:00">2019-10-01</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-02 13:16:24" itemprop="dateModified" datetime="2019-10-02T13:16:24+08:00">2019-10-02</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+            
   
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/10/01/gxoi-gzoi2019-sol/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/01/gxoi-gzoi2019-sol/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+          
 
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="逼死强迫症">逼死强迫症</h1>
+<h2 id="题意">题意</h2>
+<p>求用两个 <span class="math inline">\(1\times1\)</span> 正方形和 <span class="math inline">\(n-1\)</span> 个 <span class="math inline">\(1\times2\)</span> 长方形铺满 <span class="math inline">\(2\times n\)</span> 长方形棋盘的方案数 <span class="math inline">\(\bmod(10^9+7)\)</span>，且两个 <span class="math inline">\(1\times1\)</span> 正方形没有公共边。</p>
+<p><span class="math inline">\(1\le n\le2\times10^9,T\le500\)</span>。</p>
+<h2 id="解法">解法</h2>
+<p>令 <span class="math inline">\(f_i\)</span> 为填满 <span class="math inline">\(2\times n\)</span> 长方形的方案数。</p>
+<p>按照其中一个 <span class="math inline">\(1\times1\)</span> 正方形是否放置在最后一列讨论，可以得到递推式 <span class="math inline">\(\displaystyle f_n=f_{n-1}+f_{n-2}+2\sum_{i=1}^{n-2}g_i\)</span>，其中 <span class="math inline">\(g_i\)</span> 为用 <span class="math inline">\(1\times2\)</span> 长方形铺满 <span class="math inline">\(2\times n\)</span> 棋盘的方案数。</p>
+<p>根据 <span class="math inline">\(\sum_{i=0}^nfib_i=fib_{n+2}-1\)</span>，可以将递推式变形为 <span class="math inline">\(f_n=f_{n-1}+f_{n-2}+2g_n-2\)</span>，然后矩阵快速幂求解即可。</p>
+<h1 id="与或和">与或和</h1>
+<h2 id="题意-1">题意</h2>
+<p>给一个 <span class="math inline">\(n\times n\)</span> 的矩阵 <span class="math inline">\(a\)</span>，求它所有子矩阵的与和的和，和它所有子矩阵的或和的和 <span class="math inline">\(\bmod(10^9+7)\)</span>。</p>
+<p><span class="math inline">\(1\le n\le10^3,0\le\max a\le2^{31}-1\)</span>。</p>
+<h2 id="解法-1">解法</h2>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+    </div>
+
+    
+    
+    
+        
+      
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>tiger0132</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://noi.solutions/2019/10/01/gxoi-gzoi2019-sol/" title="「GXOI / GZOI 2019」题解 (1 / 6)">https://noi.solutions/2019/10/01/gxoi-gzoi2019-sol/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li>
+</ul>
 </div>
 
-</header>
+      
 
-      
-      
-      
-      <div class="post-body">
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/GXOI/" rel="tag"># GXOI</a>
+            
+              <a href="/tags/GZOI/" rel="tag"># GZOI</a>
+            
+          </div>
         
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
               
+                <a href="/2019/09/28/sgt-notes/" rel="next" title="sgt-notes">
+                  <i class="fa fa-chevron-left"></i> sgt-notes
+                </a>
               
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-              目前共计 25 个标签
             </div>
-            <div class="tag-cloud-tags">
-              
-                <a href="/tags/BIT/" style="font-size: 12px; color: #ccc">BIT</a> <a href="/tags/Codeforces/" style="font-size: 12px; color: #ccc">Codeforces</a> <a href="/tags/DFS-序/" style="font-size: 12px; color: #ccc">DFS 序</a> <a href="/tags/DP/" style="font-size: 12px; color: #ccc">DP</a> <a href="/tags/GXOI/" style="font-size: 12px; color: #ccc">GXOI</a> <a href="/tags/GZOI/" style="font-size: 12px; color: #ccc">GZOI</a> <a href="/tags/Internal/" style="font-size: 12px; color: #ccc">Internal</a> <a href="/tags/SAM/" style="font-size: 12px; color: #ccc">SAM</a> <a href="/tags/SHOI/" style="font-size: 12px; color: #ccc">SHOI</a> <a href="/tags/dsu-on-tree/" style="font-size: 12px; color: #ccc">dsu on tree</a> <a href="/tags/图论/" style="font-size: 12px; color: #ccc">图论</a> <a href="/tags/好题/" style="font-size: 30px; color: #111">好题</a> <a href="/tags/字符串/" style="font-size: 12px; color: #ccc">字符串</a> <a href="/tags/扫描线/" style="font-size: 12px; color: #ccc">扫描线</a> <a href="/tags/数学/" style="font-size: 30px; color: #111">数学</a> <a href="/tags/数据结构/" style="font-size: 30px; color: #111">数据结构</a> <a href="/tags/数论/" style="font-size: 12px; color: #ccc">数论</a> <a href="/tags/最短路/" style="font-size: 12px; color: #ccc">最短路</a> <a href="/tags/最短路树/" style="font-size: 12px; color: #ccc">最短路树</a> <a href="/tags/树链剖分/" style="font-size: 30px; color: #111">树链剖分</a> <a href="/tags/洛谷/" style="font-size: 12px; color: #ccc">洛谷</a> <a href="/tags/状压-DP/" style="font-size: 12px; color: #ccc">状压 DP</a> <a href="/tags/线段树/" style="font-size: 30px; color: #111">线段树</a> <a href="/tags/重链剖分/" style="font-size: 12px; color: #ccc">重链剖分</a> <a href="/tags/长链剖分/" style="font-size: 12px; color: #ccc">长链剖分</a>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
               
             </div>
           </div>
         
-      </div>
-      
-      
-      
-    </div>
+      </footer>
     
+  </div>
+  
+  
+  
+  </article>
 
-    
-    
-    
   </div>
 
 
           </div>
           
+    
+    <div class="comments" id="comments"></div>
+  
 
         </div>
           
@@ -473,8 +483,17 @@ Analytics"></a></div></noscript>
 
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -613,6 +632,23 @@ Analytics"></a></div></noscript>
 
         </div>
       </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#逼死强迫症"><span class="nav-number">1.</span> <span class="nav-text">逼死强迫症</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题意"><span class="nav-number">1.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解法"><span class="nav-number">1.2.</span> <span class="nav-text">解法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#与或和"><span class="nav-number">2.</span> <span class="nav-text">与或和</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题意-1"><span class="nav-number">2.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解法-1"><span class="nav-number">2.2.</span> <span class="nav-text">解法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
     </div>
   </aside>
@@ -835,10 +871,9 @@ if ($('body').find('pre.mermaid').length) {
 
 
   
-    <script src="/js/scrollspy.js?v=7.3.0"></script>
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
 <script src="/js/post-details.js?v=7.3.0"></script>
 
-  
 
     
 
