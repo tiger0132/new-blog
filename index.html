@@ -337,7 +337,7 @@ Analytics"></a></div></noscript>
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-02 13:59:13" itemprop="dateModified" datetime="2019-10-02T13:59:13+08:00">2019-10-02</time>
+                <time title="修改时间：2019-10-02 22:41:54" itemprop="dateModified" datetime="2019-10-02T22:41:54+08:00">2019-10-02</time>
               </span>
             
           
@@ -385,6 +385,18 @@ Analytics"></a></div></noscript>
 <p>给一个 <span class="math inline">\(n\times n\)</span> 的矩阵 <span class="math inline">\(a\)</span>，求它所有子矩阵的与和的和，和它所有子矩阵的或和的和 <span class="math inline">\(\bmod(10^9+7)\)</span>。</p>
 <p><span class="math inline">\(1\le n\le10^3,0\le\max a\le2^{31}-1\)</span>。</p>
 <h2 id="解法-1">解法</h2>
+<p>注意到每一位的答案是互不影响的，根据套路，可以按位拆分。</p>
+<p>注意到与和的和等价于全 <span class="math inline">\(1\)</span> 子矩阵个数，或和的和可以转化为与和的和。</p>
+<p>求全 <span class="math inline">\(1\)</span> 子矩阵个数，只要用单调栈维护一下就好了。</p>
+<p>复杂度 <span class="math inline">\(O(n^2w)\)</span>，注意常数因子对程序运行时间的影响。</p>
+<h1 id="旧词">旧词</h1>
+<h2 id="题意-2">题意</h2>
+<p>给一棵树和一个 <span class="math inline">\(k\)</span>，多次查询，每次查询 <span class="math inline">\(x,y\)</span>，求 <span class="math inline">\(\sum_{i\le x}\operatorname{dep}(\operatorname{LCA}(i,x))^k\bmod998244353\)</span>。</p>
+<p><span class="math inline">\(1\le n,q\le5\times10^4,1\le k\le10^9\)</span>。</p>
+<h2 id="解法-2">解法</h2>
+<p>考虑「LNOI 2014」LCA 的解法，只不过这题把区间查询换成了前缀查询，把查询深度和换成了 <span class="math inline">\(k\)</span> 次方和。</p>
+<p>那么问题变成了这样：以根为起点的链上加序列 <span class="math inline">\([1^k-0^k,2^k-1^k,\ldots,l^k-(l-1)^k]\)</span>。</p>
+<p>注意到每一个点上的权值一定是 <span class="math inline">\(dep^k-(dep-1)^k\)</span> 的倍数，所以给每一个点分配一个权值 <span class="math inline">\(w\)</span>，加的时候只需要区间 <span class="math inline">\(+1\)</span>，查询改成查询 <span class="math inline">\(\sum_{l\le i\le r}v_iw_i\)</span> 就好了。</p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
           
         
