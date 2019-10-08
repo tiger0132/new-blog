@@ -64,7 +64,7 @@
 <meta property="og:site_name" content="Tiger0132 的小站">
 <meta property="og:description" content="这里是一些数据结构傻逼题的口胡。主要是为了锻炼代码能力。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-06T11:01:25.623Z">
+<meta property="og:updated_time" content="2019-10-08T07:48:47.514Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="傻逼数据结构题口胡记">
 <meta name="twitter:description" content="这里是一些数据结构傻逼题的口胡。主要是为了锻炼代码能力。">
@@ -202,7 +202,7 @@ Analytics"></a></div></noscript>
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">25</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">26</span></a>
 
   </li>
       
@@ -228,7 +228,7 @@ Analytics"></a></div></noscript>
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">17</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">19</span></a>
 
   </li>
       
@@ -346,7 +346,7 @@ Analytics"></a></div></noscript>
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-06 19:01:25" itemprop="dateModified" datetime="2019-10-06T19:01:25+08:00">2019-10-06</time>
+                <time title="修改时间：2019-10-08 15:48:47" itemprop="dateModified" datetime="2019-10-08T15:48:47+08:00">2019-10-08</time>
               </span>
             
           
@@ -421,6 +421,20 @@ Analytics"></a></div></noscript>
 <li>区间覆盖的时候，清空区间取反的标记。</li>
 <li>区间取反的时候，如果有取反标记，那么清空取反标记；否则如果有区间覆盖标记，那么翻转区间覆盖标记。</li>
 </ul>
+<h1 id="p2787-语文1">P2787 语文1</h1>
+<h2 id="题意-2">题意</h2>
+<p>给一个字母串，支持查询一种字符的出现次数、区间覆盖、区间排序。</p>
+<p><span class="math inline">\(1\le n,m\le5\times10^4\)</span>。</p>
+<h2 id="解法-2">解法</h2>
+<p>线段树每个点记录区间中每种字母的出现次数，那么 1、2 操作就很显然了。</p>
+<p>然后根据套路，可以将 3 操作转换成 <span class="math inline">\(O(|\Sigma|)\)</span> 次 1、2 操作，然后就做完了。</p>
+<p>建议只开一棵线段树，每个节点存 26 个数，这样可以显著地减小常数。<del>虽然常数还是被爆踩了</del></p>
+<h1 id="spoj-gss6">SPOJ GSS6</h1>
+<h2 id="题意-3">题意</h2>
+<p>给一个序列，支持插入删除修改区间 GSS。</p>
+<p><span class="math inline">\(1\le n,m\le10^5\)</span>。</p>
+<h2 id="解法-3">解法</h2>
+<p>直接用 Splay 维护就完事了。此题严格弱于「NOI 2005」维护数列。注意细节。</p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
     </div>
 
@@ -533,7 +547,7 @@ Analytics"></a></div></noscript>
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -619,7 +633,9 @@ Analytics"></a></div></noscript>
         
           
         
-        <span class="site-state-item-count">25</span>
+          
+        
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -670,7 +686,7 @@ Analytics"></a></div></noscript>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#spoj-gss7"><span class="nav-number">1.</span> <span class="nav-text">SPOJ GSS7</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题意"><span class="nav-number">1.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解法"><span class="nav-number">1.2.</span> <span class="nav-text">解法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#scoi-2010序列操作"><span class="nav-number">2.</span> <span class="nav-text">「SCOI 2010」序列操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题意-1"><span class="nav-number">2.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解法-1"><span class="nav-number">2.2.</span> <span class="nav-text">解法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#spoj-gss7"><span class="nav-number">1.</span> <span class="nav-text">SPOJ GSS7</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题意"><span class="nav-number">1.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解法"><span class="nav-number">1.2.</span> <span class="nav-text">解法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#scoi-2010序列操作"><span class="nav-number">2.</span> <span class="nav-text">「SCOI 2010」序列操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题意-1"><span class="nav-number">2.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解法-1"><span class="nav-number">2.2.</span> <span class="nav-text">解法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#p2787-语文1"><span class="nav-number">3.</span> <span class="nav-text">P2787 语文1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题意-2"><span class="nav-number">3.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解法-2"><span class="nav-number">3.2.</span> <span class="nav-text">解法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#spoj-gss6"><span class="nav-number">4.</span> <span class="nav-text">SPOJ GSS6</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题意-3"><span class="nav-number">4.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解法-3"><span class="nav-number">4.2.</span> <span class="nav-text">解法</span></a></li></ol></li></ol></div>
             
 
           </div>
