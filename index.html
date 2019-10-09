@@ -197,7 +197,7 @@ Analytics"></a></div></noscript>
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">27</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">28</span></a>
 
   </li>
       
@@ -223,7 +223,7 @@ Analytics"></a></div></noscript>
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">19</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">20</span></a>
 
   </li>
       
@@ -291,7 +291,7 @@ Analytics"></a></div></noscript>
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://noi.solutions/2019/10/07/fwt-notes/">
+    <link itemprop="mainEntityOfPage" href="https://noi.solutions/2019/10/09/set-power-series-notes/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="tiger0132">
@@ -307,17 +307,13 @@ Analytics"></a></div></noscript>
         
           <h2 class="post-title" itemprop="name headline">
               
-              <a href="/2019/10/07/fwt-notes/" class="post-title-link" itemprop="url">FWT 学习笔记</a>
+              <a href="/2019/10/09/set-power-series-notes/" class="post-title-link" itemprop="url">集合幂级数学习笔记</a>
             
           </h2>
         
 
         <div class="post-meta">
             <span class="post-meta-item">
-              
-                <i class="fa fa-thumb-tack"></i>
-                <font color=#3498db><b>持续更新</b></font>
-                <span class="post-meta-divider">|</span>
               
               
 
@@ -330,19 +326,11 @@ Analytics"></a></div></noscript>
                 
               
 
-              <time title="创建时间：2019-10-07 10:25:02" itemprop="dateCreated datePublished" datetime="2019-10-07T10:25:02+08:00">2019-10-07</time>
+              <time title="创建时间：2019-10-09 17:03:38 / 修改时间：18:18:40" itemprop="dateCreated datePublished" datetime="2019-10-09T17:03:38+08:00">2019-10-09</time>
             </span>
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-09 15:05:43" itemprop="dateModified" datetime="2019-10-09T15:05:43+08:00">2019-10-09</time>
-              </span>
             
           
             <span class="post-meta-item">
@@ -371,8 +359,8 @@ Analytics"></a></div></noscript>
       
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2019/10/07/fwt-notes/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/07/fwt-notes/" itemprop="commentCount"></span>
+    <a title="valine" href="/2019/10/09/set-power-series-notes/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/09/set-power-series-notes/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -388,11 +376,32 @@ Analytics"></a></div></noscript>
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>FWT 是一种用于快速计算位运算卷积的算法。</p>
-<p><strong>作者脑回路比较清奇，谨慎阅读。</strong></p>
-          <!--noindex-->
           
-          <!--/noindex-->
+            <a id="more"></a>
+<h1 id="集合并卷积">集合并卷积</h1>
+<h2 id="定义">定义</h2>
+<p>设 <span class="math inline">\(f=\sum_{S\subseteq2^U}f_Sx^S,g=\sum_{S\subseteq2^U}g_Sx^S\)</span>，定义 <span class="math inline">\(f\cdot g=h\)</span>，其中 <span class="math inline">\(h\)</span> 是一个集合幂级数，且 <span class="math inline">\(h_S\)</span> 满足：</p>
+<p><span class="math display">\[h_S=\sum_{L\subseteq S}\sum_{R\subseteq S}[L\cup R=S]f_Lg_R\]</span></p>
+<h1 id="集合对称差卷积">集合对称差卷积</h1>
+<p>咕了。</p>
+<h1 id="子集卷积">子集卷积</h1>
+<h2 id="定义-1">定义</h2>
+<p>设 <span class="math inline">\(f=\sum_{S\subseteq2^U}f_Sx^S,g=\sum_{S\subseteq2^U}g_Sx^S\)</span>，定义 <span class="math inline">\(f\cdot g=h\)</span>，其中 <span class="math inline">\(h\)</span> 是一个集合幂级数，且 <span class="math inline">\(h_S\)</span> 满足：</p>
+<p><span class="math display">\[h_S=\sum_{L\subseteq S}\sum_{R\subseteq S}[L\cup R=S][L\cap R =\varnothing]f_Lg_R\]</span></p>
+<p>即</p>
+<p><span class="math display">\[h_S=\sum_{T\subseteq S}f_Tg_{S-T}\]</span></p>
+<h2 id="计算">计算</h2>
+<p>设 <span class="math inline">\(f&#39;_{i,S}=[|S|=i]f_S,g&#39;_{i,S}=[|S|=i]g_S\)</span>。然后推式子：</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;\sum_{L\subseteq S}\sum_{R\subseteq S}[L\cup R=S][L\cap R =\varnothing]f_Lg_R\\
+=&amp;\sum_{L\subseteq S}\sum_{R\subseteq S}[L\cup R=S][|S|-|L|=|R|]f_Lg_R\\
+=&amp;\sum_{L\subseteq S}\sum_{R\subseteq S}[L\cup R=S]f&#39;_{|L|,L}g&#39;_{|S|-|L|,R}\\
+\end{aligned}
+\]</span></p>
+<p>将 <span class="math inline">\(f&#39;_x, g&#39;_x\)</span> 当做集合幂级数，然后暴力卷 <span class="math inline">\(O(n^2)\)</span> 遍集合并卷积即可计算出答案。</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+          
         
       
     </div>
@@ -646,6 +655,131 @@ Analytics"></a></div></noscript>
 
       
           <p>里面的套路大概都比较基础。持续更新……</p>
+          <!--noindex-->
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+      
+    
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://noi.solutions/2019/10/07/fwt-notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tiger0132">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tiger0132 的小站">
+    </span>
+      <header class="post-header">
+
+        
+          <h2 class="post-title" itemprop="name headline">
+              
+              <a href="/2019/10/07/fwt-notes/" class="post-title-link" itemprop="url">FWT 学习笔记</a>
+            
+          </h2>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-10-07 10:25:02" itemprop="dateCreated datePublished" datetime="2019-10-07T10:25:02+08:00">2019-10-07</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-09 17:03:55" itemprop="dateModified" datetime="2019-10-09T17:03:55+08:00">2019-10-09</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Notes/" itemprop="url" rel="index"><span itemprop="name">Notes</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/10/07/fwt-notes/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/07/fwt-notes/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>FWT 是一种用于快速计算位运算卷积的算法。</p>
+<p><strong>作者脑回路比较清奇，谨慎阅读。</strong></p>
           <!--noindex-->
           
           <!--/noindex-->
@@ -1281,132 +1415,6 @@ Analytics"></a></div></noscript>
 
       
     
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://noi.solutions/2019/09/04/bzoj3064-sol/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="tiger0132">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tiger0132 的小站">
-    </span>
-      <header class="post-header">
-
-        
-          <h2 class="post-title" itemprop="name headline">
-              
-              <a href="/2019/09/04/bzoj3064-sol/" class="post-title-link" itemprop="url">「BZOJ 3064」CPU 监控 - 线段树</a>
-            
-          </h2>
-        
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              
-              
-
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-09-04 06:40:14" itemprop="dateCreated datePublished" datetime="2019-09-04T06:40:14+08:00">2019-09-04</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-18 18:44:13" itemprop="dateModified" datetime="2019-09-18T18:44:13+08:00">2019-09-18</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Solutions/" itemprop="url" rel="index"><span itemprop="name">Solutions</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/09/04/bzoj3064-sol/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/09/04/bzoj3064-sol/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="题意">题意</h1>
-<p>维护一个序列，支持区间加、区间赋值、查区间最大值、查区间历史最大值。</p>
-<p><span class="math inline">\(1\le n,m\le10^5\)</span>。</p>
-          <!--noindex-->
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-      
-    
   </section>
 
   
@@ -1444,7 +1452,7 @@ Analytics"></a></div></noscript>
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-count">20</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1534,7 +1542,9 @@ Analytics"></a></div></noscript>
         
           
         
-        <span class="site-state-item-count">27</span>
+          
+        
+        <span class="site-state-item-count">28</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
