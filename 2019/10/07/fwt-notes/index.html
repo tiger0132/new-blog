@@ -56,14 +56,18 @@
   };
 </script>
 
-  <meta property="og:type" content="article">
-<meta property="og:title" content="fwt-notes">
+  <meta name="description" content="FWT 是一种用于快速计算位运算卷积的算法。 作者脑回路比较清奇，谨慎阅读。">
+<meta name="keywords" content="FWT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FWT 学习笔记">
 <meta property="og:url" content="https://noi.solutions/2019/10/07/fwt-notes/index.html">
 <meta property="og:site_name" content="Tiger0132 的小站">
+<meta property="og:description" content="FWT 是一种用于快速计算位运算卷积的算法。 作者脑回路比较清奇，谨慎阅读。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-07T02:25:02.738Z">
+<meta property="og:updated_time" content="2019-10-09T07:05:43.498Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="fwt-notes">
+<meta name="twitter:title" content="FWT 学习笔记">
+<meta name="twitter:description" content="FWT 是一种用于快速计算位运算卷积的算法。 作者脑回路比较清奇，谨慎阅读。">
   <link rel="canonical" href="https://noi.solutions/2019/10/07/fwt-notes/">
 
 
@@ -78,7 +82,7 @@
   };
 </script>
 
-  <title>fwt-notes | Tiger0132 的小站</title>
+  <title>FWT 学习笔记 | Tiger0132 的小站</title>
   
 
 
@@ -198,7 +202,7 @@ Analytics"></a></div></noscript>
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">26</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">27</span></a>
 
   </li>
       
@@ -307,7 +311,7 @@ Analytics"></a></div></noscript>
       <header class="post-header">
 
         
-          <h2 class="post-title" itemprop="name headline">fwt-notes
+          <h2 class="post-title" itemprop="name headline">FWT 学习笔记
 
             
           </h2>
@@ -315,6 +319,10 @@ Analytics"></a></div></noscript>
 
         <div class="post-meta">
             <span class="post-meta-item">
+              
+                <i class="fa fa-thumb-tack"></i>
+                <font color=#3498db><b>持续更新</b></font>
+                <span class="post-meta-divider">|</span>
               
               
 
@@ -328,6 +336,31 @@ Analytics"></a></div></noscript>
               
 
               <time title="创建时间：2019-10-07 10:25:02" itemprop="dateCreated datePublished" datetime="2019-10-07T10:25:02+08:00">2019-10-07</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-09 15:05:43" itemprop="dateModified" datetime="2019-10-09T15:05:43+08:00">2019-10-09</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Notes/" itemprop="url" rel="index"><span itemprop="name">Notes</span></a></span>
+
+                
+                
+              
             </span>
           
 
@@ -368,7 +401,71 @@ Analytics"></a></div></noscript>
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <p>FWT 是一种用于快速计算位运算卷积的算法。</p>
+<p><strong>作者脑回路比较清奇，谨慎阅读。</strong></p>
+<a id="more"></a>
+<h1 id="是什么">是什么</h1>
+<p>众所周知，FFT 可以用于快速计算 <span class="math inline">\(c_i=\sum_{j+k=i}a_jb_k\)</span> 形式的卷积。</p>
+<p>但是有时候，我们会遇到这样的卷积：<span class="math inline">\(c_i=\sum_{j\oplus k=i}a_jb_k\)</span>，其中 <span class="math inline">\(\oplus\)</span> 是位运算。这时我们就可以利用 FWT 快速计算。</p>
+<h1 id="怎么做">怎么做</h1>
+<p><strong>注意，在下文中，<span class="math inline">\(\bf A\)</span> 是 <span class="math inline">\(\bf n-1\)</span> 次多项式。</strong></p>
+<p>FFT 是将原序列进行了某种变换之后，把卷积转化为了点乘。我们考虑用类似的思路加速位运算卷积的计算。</p>
+<p>定义 <span class="math inline">\(\operatorname{DWT}(A)\)</span> 为「某种变换」，<span class="math inline">\(f(i,j)\)</span> 为系数。即 <span class="math inline">\(\operatorname{DWT}(A)_i=\sum_{j=0}^{n-1}A_jf(i,j)\)</span>。</p>
+<p>我们希望 DWT 变换可以将卷积化为点乘，那么有 <span class="math inline">\(\operatorname{DWT}(A)_i\operatorname{DWT}(B)_i=\operatorname{DWT}(A*B)\)</span>。</p>
+<p>然后我们来化式子。</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;\operatorname{DWT}(A)_i\operatorname{DWT}(B)_i\\
+=&amp;\sum_{j=0}^{n-1}A_jf(i,j)\sum_{k=0}^{n-1}B_kf(i,k)\\
+=&amp;\sum_{j=0}^{n-1}\sum_{k=0}^{n-1}A_jB_kf(i,j)f(i,k)\\
+&amp;\operatorname{DWT}(A*B)_i\\
+=&amp;\sum_{t=0}^{n-1}[x^t](A*B)f(i,t)\\
+=&amp;\sum_{t=0}^{n-1}\sum_{j\oplus k=t}A_jB_kf(i,t)\\
+\end{aligned}
+\]</span></p>
+<p>注意到实际上 <span class="math inline">\(\displaystyle\sum_{j=0}^{n-1}\sum_{k=0}^{n-1}A_jB_k\)</span> 和 <span class="math inline">\(\displaystyle\sum_{t=0}^{n-1}\sum_{j\oplus k=t}A_jB_k\)</span> 是一样的东西，所以可以一起消掉。</p>
+<p>所以 <span class="math inline">\(f(i,j)f(i,k)=f(i,j\oplus k)\)</span>。</p>
+<p>上式有一个重要的推论：令 <span class="math inline">\(i_x\)</span> 为 <span class="math inline">\(i\)</span> 的二进制表示的第 <span class="math inline">\(x+1\)</span> 高位，那么 <span class="math inline">\(f(i,j)=f(i_0,j_0)f(i_1,j_1)\ldots\)</span>。</p>
+<p>在这里，我们先不考虑 <span class="math inline">\(f\)</span> 函数的构造。</p>
+<p>FFT 快速计算的原理是利用单位根的性质，将原问题分解成一个大小减半的子问题。它的拆分方式是奇偶拆分。考虑对 FWT 也用类似的方法加速。</p>
+<p>令 <span class="math inline">\(2^k=n\)</span>。为了处理起来方便，我们希望 <span class="math inline">\(f(i,j)=f(2i,2j)\)</span>。</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;\operatorname{DWT}(A)_i\\
+=&amp;\sum_{j=0}^{n-1}A_jf(i,j)\\
+=&amp;\sum_{j=0}^{\frac n2-1}A_jf(i,j)+\sum_{j=\frac n2}^{n-1}A_jf(i,j)\\
+=&amp;\sum_{j=0}^{\frac n2-1}A_jf(i_0,j_0)f(i_{[1,k)},j_{[1,k)})+\sum_{j=\frac n2}^{n-1}A_jf(i_0,j_0)f(i_{[1,k)},j_{[1,k)})\\
+=&amp;f(i_0,0)\sum_{j=0}^{\frac n2-1}A_jf(i_{[1,k)},j_{[1,k)})+f(i_0,1)\sum_{j=\frac n2}^{n-1}A_jf(i_{[1,k)},j_{[1,k)})\\
+\end{aligned}
+\]</span></p>
+<p>所以我们将原序列拆分成了左右两个小序列，将原问题分解成了一个大小减半的子问题。</p>
+<p>令 <span class="math inline">\(A_L\)</span> 为 <span class="math inline">\(A\)</span> 的 <span class="math inline">\([0,\frac n2)\)</span> 部分，<span class="math inline">\(A_R\)</span> 为 <span class="math inline">\(A\)</span> 的 <span class="math inline">\([\frac n2,n)\)</span> 部分。那么对于 <span class="math inline">\(i\in[0,\frac n2)\)</span>，有：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\operatorname{DWT}(A)_i&amp;=f(0,0)\operatorname{DWT}(A_L)_i+f(0,1)\operatorname{DWT}(A_R)_i\\
+\operatorname{DWT}(A)_{i+\frac n2}&amp;=f(1,0)\operatorname{DWT}(A_L)_i+f(1,1)\operatorname{DWT}(A_R)_i
+\end{aligned}
+\]</span></p>
+<p>显然，DWT 变换有下列性质：</p>
+<ul>
+<li><span class="math inline">\(k\operatorname{DWT}(A)=\operatorname{DWT}(kA)\)</span></li>
+<li><span class="math inline">\(\operatorname{DWT}(A)+\operatorname{DWT}(B)=\operatorname{DWT}(A+B)\)</span></li>
+</ul>
+<p>接下来考虑 IDWT。</p>
+<p>在上面 DWT 的部分中，我们使用 <span class="math inline">\(A_L,A_R\)</span> 的 DWT 推出了 <span class="math inline">\(A\)</span> 的 DWT。现在我们考虑怎么用 <span class="math inline">\(A_L,A_R\)</span> 的 IDWT 推出 <span class="math inline">\(A\)</span> 的 IDWT。</p>
+<p>IDWT 也类似。只需要用上面两个等式的左部解出 <span class="math inline">\(\operatorname{DWT}(A_L)_i, \operatorname{DWT}(A_R)_i\)</span> 就好了。</p>
+<p>关于循环顺序对 FWT 的影响……</p>
+<blockquote><p>有个 JB 影响，你把 FWT 看成高维 FFT 不好吗</p>
+<p>维度间顺序无关</p>
+<footer><strong>兔队</strong><cite><span class="exturl" data-url="aHR0cHM6Ly93d3cubHVvZ3Uub3JnL2Rpc2N1c3Mvc2hvdy8xNTIzODE=" title="https://www.luogu.org/discuss/show/152381">关于 FWT<i class="fa fa-external-link"></i></span></cite></footer></blockquote>
+<p>所以构造 <span class="math inline">\(f\)</span> 的时候，必须得满足 <span class="math inline">\(f(0,0)\ne f(1,0)\)</span> 或 <span class="math inline">\(f(0,1)\ne f(1,1)\)</span>。</p>
+<p>这是普遍使用的构造：</p>
+<ul>
+<li><span class="math inline">\(\oplus~\text{is or}: f(i,j)=[i~\text{and}~j=j]\)</span></li>
+<li><span class="math inline">\(\oplus~\text{is and}: f(i,j)=[i~\text{and}~j=i]\)</span></li>
+<li><span class="math inline">\(\oplus~\text{is xor}: f(i,j)=(-1)^{\operatorname{popcnt}(i~\text{and}~j)}\)</span></li>
+</ul>
+<p>所以或卷积 DWT 的意义是 <strong>子集和</strong>，与卷积 DWT 的意义是 <strong>超集和</strong>。</p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
     </div>
 
@@ -385,7 +482,7 @@ Analytics"></a></div></noscript>
     <strong>本文作者： </strong>tiger0132</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://noi.solutions/2019/10/07/fwt-notes/" title="fwt-notes">https://noi.solutions/2019/10/07/fwt-notes/</a>
+    <a href="https://noi.solutions/2019/10/07/fwt-notes/" title="FWT 学习笔记">https://noi.solutions/2019/10/07/fwt-notes/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li>
@@ -395,6 +492,15 @@ Analytics"></a></div></noscript>
       
 
       <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/FWT/" rel="tag"># FWT</a>
+            
+          </div>
+        
 
         
 
@@ -444,8 +550,17 @@ Analytics"></a></div></noscript>
 
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -545,7 +660,9 @@ Analytics"></a></div></noscript>
         
           
         
-        <span class="site-state-item-count">26</span>
+          
+        
+        <span class="site-state-item-count">27</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -586,6 +703,23 @@ Analytics"></a></div></noscript>
 
         </div>
       </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#是什么"><span class="nav-number">1.</span> <span class="nav-text">是什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#怎么做"><span class="nav-number">2.</span> <span class="nav-text">怎么做</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
     </div>
   </aside>
