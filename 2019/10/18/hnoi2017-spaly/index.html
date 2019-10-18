@@ -56,18 +56,18 @@
   };
 </script>
 
-  <meta name="description" content="题意 维护一棵 Spaly，支持插入、删除 max/min、把 max/min spaly 到根。每次操作输出运算次数（具体见原题面）。 \(1\le m\le10^5\)。  解法 首先考虑 Spaly 操作到底会对树有什么印象。 假如我要把最小值 \(x\) spaly 到根，那么 \(x\) 的右子树会挂在 \(x\) 父节点的左子树上，原树会挂在 \(x\) 的右子树上。 也就是说，除了">
+  <meta name="description" content="题意 维护一棵 Spaly，支持插入、删除 max/min、把 max/min spaly 到根。每次操作输出运算次数（具体见原题面）。 \(1\le m\le10^5\)。">
 <meta name="keywords" content="数据结构,BIT,STL,HNOI">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「HNOI 2017」单旋 - BIT + set">
 <meta property="og:url" content="https://noi.solutions/2019/10/18/hnoi2017-spaly/index.html">
 <meta property="og:site_name" content="Tiger0132 的小站">
-<meta property="og:description" content="题意 维护一棵 Spaly，支持插入、删除 max/min、把 max/min spaly 到根。每次操作输出运算次数（具体见原题面）。 \(1\le m\le10^5\)。  解法 首先考虑 Spaly 操作到底会对树有什么印象。 假如我要把最小值 \(x\) spaly 到根，那么 \(x\) 的右子树会挂在 \(x\) 父节点的左子树上，原树会挂在 \(x\) 的右子树上。 也就是说，除了">
+<meta property="og:description" content="题意 维护一棵 Spaly，支持插入、删除 max/min、把 max/min spaly 到根。每次操作输出运算次数（具体见原题面）。 \(1\le m\le10^5\)。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-18T15:05:53.909Z">
+<meta property="og:updated_time" content="2019-10-18T15:35:59.085Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「HNOI 2017」单旋 - BIT + set">
-<meta name="twitter:description" content="题意 维护一棵 Spaly，支持插入、删除 max/min、把 max/min spaly 到根。每次操作输出运算次数（具体见原题面）。 \(1\le m\le10^5\)。  解法 首先考虑 Spaly 操作到底会对树有什么印象。 假如我要把最小值 \(x\) spaly 到根，那么 \(x\) 的右子树会挂在 \(x\) 父节点的左子树上，原树会挂在 \(x\) 的右子树上。 也就是说，除了">
+<meta name="twitter:description" content="题意 维护一棵 Spaly，支持插入、删除 max/min、把 max/min spaly 到根。每次操作输出运算次数（具体见原题面）。 \(1\le m\le10^5\)。">
   <link rel="canonical" href="https://noi.solutions/2019/10/18/hnoi2017-spaly/">
 
 
@@ -331,7 +331,7 @@ Analytics"></a></div></noscript>
                 
               
 
-              <time title="创建时间：2019-10-18 23:00:45 / 修改时间：23:05:53" itemprop="dateCreated datePublished" datetime="2019-10-18T23:00:45+08:00">2019-10-18</time>
+              <time title="创建时间：2019-10-18 23:00:45 / 修改时间：23:35:59" itemprop="dateCreated datePublished" datetime="2019-10-18T23:00:45+08:00">2019-10-18</time>
             </span>
           
             
@@ -379,7 +379,7 @@ Analytics"></a></div></noscript>
         <h1 id="题意">题意</h1>
 <p>维护一棵 Spaly，支持插入、删除 max/min、把 max/min spaly 到根。每次操作输出运算次数（具体见原题面）。</p>
 <p><span class="math inline">\(1\le m\le10^5\)</span>。</p>
-<!-- more =-->
+<a id="more"></a>
 <h1 id="解法">解法</h1>
 <p>首先考虑 Spaly 操作到底会对树有什么印象。</p>
 <p>假如我要把最小值 <span class="math inline">\(x\)</span> spaly 到根，那么 <span class="math inline">\(x\)</span> 的右子树会挂在 <span class="math inline">\(x\)</span> 父节点的左子树上，原树会挂在 <span class="math inline">\(x\)</span> 的右子树上。</p>
