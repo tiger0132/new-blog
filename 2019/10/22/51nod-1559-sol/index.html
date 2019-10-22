@@ -56,19 +56,19 @@
   };
 </script>
 
-  <meta name="description" content="简介 长链剖分是树链剖分的一种，与重链剖分不同，长链剖分每次取出最长的一条路径。">
-<meta name="keywords" content="树链剖分,长链剖分">
+  <meta name="description" content="题意 给一个 \(n\times m\) 的棋盘，上面放了一些车。每次查询一个矩形里的所有格子是不是都能被 矩形内部的车攻击到或占据。 \(1\le n,m\le10^5,1\le q\le2\times10^5\)。">
+<meta name="keywords" content="扫描线,线段树,数据结构">
 <meta property="og:type" content="article">
-<meta property="og:title" content="长链剖分学习笔记">
-<meta property="og:url" content="https://noi.solutions/2019/08/13/long-path-decomposition-notes/index.html">
+<meta property="og:title" content="「51nod」1559 车和矩形 - 扫描线 + 线段树">
+<meta property="og:url" content="https://noi.solutions/2019/10/22/51nod-1559-sol/index.html">
 <meta property="og:site_name" content="Tiger0132 的小站">
-<meta property="og:description" content="简介 长链剖分是树链剖分的一种，与重链剖分不同，长链剖分每次取出最长的一条路径。">
+<meta property="og:description" content="题意 给一个 \(n\times m\) 的棋盘，上面放了一些车。每次查询一个矩形里的所有格子是不是都能被 矩形内部的车攻击到或占据。 \(1\le n,m\le10^5,1\le q\le2\times10^5\)。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-13T13:02:21.364Z">
+<meta property="og:updated_time" content="2019-10-22T03:57:04.618Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="长链剖分学习笔记">
-<meta name="twitter:description" content="简介 长链剖分是树链剖分的一种，与重链剖分不同，长链剖分每次取出最长的一条路径。">
-  <link rel="canonical" href="https://noi.solutions/2019/08/13/long-path-decomposition-notes/">
+<meta name="twitter:title" content="「51nod」1559 车和矩形 - 扫描线 + 线段树">
+<meta name="twitter:description" content="题意 给一个 \(n\times m\) 的棋盘，上面放了一些车。每次查询一个矩形里的所有格子是不是都能被 矩形内部的车攻击到或占据。 \(1\le n,m\le10^5,1\le q\le2\times10^5\)。">
+  <link rel="canonical" href="https://noi.solutions/2019/10/22/51nod-1559-sol/">
 
 
 <script id="page-configurations">
@@ -82,7 +82,7 @@
   };
 </script>
 
-  <title>长链剖分学习笔记 | Tiger0132 的小站</title>
+  <title>「51nod」1559 车和矩形 - 扫描线 + 线段树 | Tiger0132 的小站</title>
   
 
 
@@ -297,7 +297,7 @@ Analytics"></a></div></noscript>
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://noi.solutions/2019/08/13/long-path-decomposition-notes/">
+    <link itemprop="mainEntityOfPage" href="https://noi.solutions/2019/10/22/51nod-1559-sol/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="tiger0132">
@@ -311,7 +311,7 @@ Analytics"></a></div></noscript>
       <header class="post-header">
 
         
-          <h2 class="post-title" itemprop="name headline">长链剖分学习笔记
+          <h2 class="post-title" itemprop="name headline">「51nod」1559 车和矩形 - 扫描线 + 线段树
 
             
           </h2>
@@ -331,25 +331,12 @@ Analytics"></a></div></noscript>
                 
               
 
-              <time title="创建时间：2019-08-13 06:13:04 / 修改时间：21:02:21" itemprop="dateCreated datePublished" datetime="2019-08-13T06:13:04+08:00">2019-08-13</time>
+              <time title="创建时间：2019-10-22 11:47:08 / 修改时间：11:57:04" itemprop="dateCreated datePublished" datetime="2019-10-22T11:47:08+08:00">2019-10-22</time>
             </span>
           
             
 
             
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Notes/" itemprop="url" rel="index"><span itemprop="name">Notes</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -372,8 +359,8 @@ Analytics"></a></div></noscript>
       
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2019/08/13/long-path-decomposition-notes/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/08/13/long-path-decomposition-notes/" itemprop="commentCount"></span>
+    <a title="valine" href="/2019/10/22/51nod-1559-sol/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/22/51nod-1559-sol/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -389,35 +376,33 @@ Analytics"></a></div></noscript>
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="简介">简介</h1>
-<p>长链剖分是树链剖分的一种，与重链剖分不同，长链剖分每次取出最长的一条路径。</p>
+        <h1 id="题意">题意</h1>
+<p>给一个 <span class="math inline">\(n\times m\)</span> 的棋盘，上面放了一些车。每次查询一个矩形里的所有格子是不是都能被 <strong>矩形内部的车攻击到或占据</strong>。</p>
+<p><span class="math inline">\(1\le n,m\le10^5,1\le q\le2\times10^5\)</span>。</p>
 <a id="more"></a>
-<h1 id="定义">定义</h1>
-<p>定义一个点的所有儿子中，子树最深的那个儿子为这个点的 <strong>重儿子</strong>。<del>准确的说应该是 preferred child</del></p>
-<p>长链剖分的方式与重链剖分类似，只是把重儿子的定义改变了，此处不再赘述。</p>
-<h1 id="性质">性质</h1>
-<ol type="1">
-<li><p>一个点到根最多经过 <span class="math inline">\(O(\sqrt n)\)</span> 条长链。</p>
-<p>证明：显然，最坏情况下，一个点经过的长链长度分别是 <span class="math inline">\(1,2,3,\ldots,O(\sqrt n)\)</span>。</p></li>
-<li><p>一个点的 <span class="math inline">\(k\)</span> 级祖先所在长链的长度 <span class="math inline">\(\ge k\)</span>。</p>
-<p>证明：经过一个点的长链的终点一定是这个点所在子树中最深的叶子之一。显然子树的深度是 <span class="math inline">\(\ge k\)</span> 的。</p></li>
-</ol>
-<h1 id="应用">应用</h1>
-<h2 id="求-k-级祖先">求 <span class="math inline">\(k\)</span> 级祖先</h2>
-<p>众所周知这题可以倍增，复杂度 <span class="math inline">\(O(n\log n)-O(\log n)\)</span>。</p>
-<hr>
-<p>直接对树进行长链剖分，然后对每个点暴力跳长链。</p>
-<p>这样我们得到了一个朴素的 <span class="math inline">\(O(n)-O(\sqrt n)\)</span> 做法。显然有优化空间。</p>
-<hr>
-<p>我们向上倍增每条长链，并记录倍增后长链上的所有点。这样我们就成功地把上面的做法优化到了 <span class="math inline">\(O(n)-O(\log n)\)</span>。</p>
-<p>证明：假设当前所在长链（倍增前）的长度为 <span class="math inline">\(l\)</span>，那么可以通过这条长链往上跳 <span class="math inline">\(2l\)</span> 个点。根据性质 2，当前点的 <span class="math inline">\(2l\)</span> 级祖先所在的长链长度是 <span class="math inline">\(\ge 2l\)</span> 的，所以可以往上跳的长度倍增了。显然单次查询复杂度是 <span class="math inline">\(O(\log n)\)</span> 的。</p>
-<hr>
-<p>令 <span class="math inline">\(k=2^a+b\)</span> 且 <span class="math inline">\(0\le b&lt;2^a\)</span>。</p>
-<p>注意到性质 2。因为 <span class="math inline">\(b&lt;2^a\)</span>，所以查询点的 <span class="math inline">\(2^a\)</span> 级祖先所在长链长度一定 <span class="math inline">\(\ge2^a\)</span>。</p>
-<p>又因为在 <span class="math inline">\(O(n)-O(\log n)\)</span> 算法中我们向上倍增了每条长链，所以如果已知查询点的 <span class="math inline">\(2^a\)</span> 级祖先，我们可以在 <span class="math inline">\(O(1)\)</span> 的时间内得到 <span class="math inline">\(2^a+b\)</span> 级祖先的值。</p>
-<p>查询一个点的 <span class="math inline">\(2^a\)</span> 级祖先可以用倍增。所以总复杂度 <span class="math inline">\(O(n\log n)-O(1)\)</span>。</p>
-<h2 id="优化与深度有关的-dp">优化与深度有关的 DP</h2>
-<p>施工中</p>
+<h1 id="解法">解法</h1>
+<p>一个矩形满足条件当且仅当每一行都有至少有一个车，或者每一列至少有一个车。</p>
+<p>注意到行和列是独立的，我们可以分开做。这里我们只考虑行的情况。</p>
+<p>开一棵线段树，记录每一行最后一次出现的车在哪一列。</p>
+<p>然后把询问离线下来，从第一列开始往右边扫，每次把这一列的车丢到线段树里。</p>
+<p>对于每一个询问 <span class="math inline">\((x_1,y_1,x_2,y_2),x_1\le x_2,y_1\le y_2\)</span>，我们只需要判定第 <span class="math inline">\(x_1\)</span> 行到第 <span class="math inline">\(x_2\)</span> 行里，每一行最后一次出现的车都在 <span class="math inline">\(\ge y_1\)</span> 的列上。</p>
+<h1 id="代码">代码</h1>
+<div class="spoiler collapsed"><div class="spoiler-title">代码</div><div class="spoiler-content"><figure class="highlight cpp">
+<figcaption>
+<span>51nod1559.cpp</span>
+</figcaption>
+<table>
+<tr>
+<td class="gutter">
+<pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre>
+</td>
+<td class="code">
+<pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// clang-format off</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> L ch][0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> R ch][1</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">4e5</span> + <span class="number">54</span>;</span><br><span class="line"><span class="keyword">int</span> ch[N][<span class="number">2</span>], l[N], r[N], mid[N], mn[N], c;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">up</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; x[mn] = <span class="built_in">std</span>::min(x[L][mn], x[R][mn]); &#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> ql, <span class="keyword">int</span> qr)</span> </span>&#123;</span><br><span class="line">    x[l] = ql, x[r] = qr, x[mid] = (ql + qr) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span> (ql == qr) <span class="keyword">return</span> <span class="keyword">void</span>(x[mn] = <span class="number">0</span>);</span><br><span class="line">    build(x[L] = ++c, ql, x[mid]), build(x[R] = ++c, x[mid] + <span class="number">1</span>, qr), up(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">upd</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> qi, <span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x[l] == x[r]) <span class="keyword">return</span> <span class="keyword">void</span>(x[mn] = v);</span><br><span class="line">    upd(qi &lt;= x[mid] ? x[L] : x[R], qi, v), up(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">qry</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> ql, <span class="keyword">int</span> qr)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (ql &lt;= x[l] &amp;&amp; x[r] &lt;= qr) <span class="keyword">return</span> x[mn];</span><br><span class="line">    <span class="keyword">int</span> ret = <span class="number">1e9</span>;</span><br><span class="line">    <span class="keyword">if</span> (ql &lt;= x[mid]) ret = <span class="built_in">std</span>::min(ret, qry(x[L], ql, qr));</span><br><span class="line">    <span class="keyword">if</span> (x[mid] &lt; qr) ret = <span class="built_in">std</span>::min(ret, qry(x[R], ql, qr));</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// clang-format on</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">point</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> pos[<span class="number">2</span>];</span><br><span class="line">&#125; a[N];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">rect</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> pos[<span class="number">2</span>][<span class="number">2</span>], *ans;</span><br><span class="line">&#125; b[N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m, k, q, ans[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">calc</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::sort(a + <span class="number">1</span>, a + k + <span class="number">1</span>,</span><br><span class="line">              [x, y](<span class="keyword">const</span> point&amp; u, <span class="keyword">const</span> point&amp; v) &#123; <span class="keyword">return</span> u.pos[x] &lt; v.pos[x]; &#125;);</span><br><span class="line">    <span class="built_in">std</span>::sort(b + <span class="number">1</span>, b + q + <span class="number">1</span>,</span><br><span class="line">              [x, y](<span class="keyword">const</span> rect&amp; u, <span class="keyword">const</span> rect&amp; v) &#123; <span class="keyword">return</span> u.pos[x][<span class="number">1</span>] &lt; v.pos[x][<span class="number">1</span>]; &#125;);</span><br><span class="line">    <span class="keyword">int</span> p1 = <span class="number">1</span>, p2 = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (; p1 &lt;= q; p1++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (; a[p2].pos[x] &lt;= b[p1].pos[x][<span class="number">1</span>] &amp;&amp; p2 &lt;= k; p2++)</span><br><span class="line">            upd(<span class="number">1</span>, a[p2].pos[y], a[p2].pos[x]);</span><br><span class="line">        <span class="keyword">int</span> tt = qry(<span class="number">1</span>, b[p1].pos[y][<span class="number">0</span>], b[p1].pos[y][<span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">if</span> (tt &gt;= b[p1].pos[x][<span class="number">0</span>]) *b[p1].ans = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d%d%d"</span>, &amp;n, &amp;m, &amp;k, &amp;q);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= k; i++) <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;a[i].pos[<span class="number">0</span>], &amp;a[i].pos[<span class="number">1</span>]);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= q; i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%d%d"</span>, &amp;b[i].pos[<span class="number">0</span>][<span class="number">0</span>], &amp;b[i].pos[<span class="number">1</span>][<span class="number">0</span>], &amp;b[i].pos[<span class="number">0</span>][<span class="number">1</span>],</span><br><span class="line">              &amp;b[i].pos[<span class="number">1</span>][<span class="number">1</span>]),</span><br><span class="line">            b[i].ans = ans + i;</span><br><span class="line">    build(c = <span class="number">1</span>, <span class="number">1</span>, m);</span><br><span class="line">    calc(<span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line">    build(c = <span class="number">1</span>, <span class="number">1</span>, n);</span><br><span class="line">    calc(<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= q; i++) <span class="built_in">puts</span>(ans[i] ? <span class="string">"YES"</span> : <span class="string">"NO"</span>);</span><br><span class="line">&#125;</span><br></pre>
+</td>
+</tr>
+</table>
+</figure>
+</div></div>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
     </div>
 
@@ -434,7 +419,7 @@ Analytics"></a></div></noscript>
     <strong>本文作者： </strong>tiger0132</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://noi.solutions/2019/08/13/long-path-decomposition-notes/" title="长链剖分学习笔记">https://noi.solutions/2019/08/13/long-path-decomposition-notes/</a>
+    <a href="https://noi.solutions/2019/10/22/51nod-1559-sol/" title="「51nod」1559 车和矩形 - 扫描线 + 线段树">https://noi.solutions/2019/10/22/51nod-1559-sol/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li>
@@ -449,9 +434,11 @@ Analytics"></a></div></noscript>
           
           <div class="post-tags">
             
-              <a href="/tags/树链剖分/" rel="tag"># 树链剖分</a>
+              <a href="/tags/扫描线/" rel="tag"># 扫描线</a>
             
-              <a href="/tags/长链剖分/" rel="tag"># 长链剖分</a>
+              <a href="/tags/线段树/" rel="tag"># 线段树</a>
+            
+              <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
             
           </div>
         
@@ -461,8 +448,8 @@ Analytics"></a></div></noscript>
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/08/12/luogu-p2210-sol/" rel="next" title="「洛谷 P2210」Haywire - 状压 DP">
-                  <i class="fa fa-chevron-left"></i> 「洛谷 P2210」Haywire - 状压 DP
+                <a href="/2019/10/18/hnoi2017-spaly-sol/" rel="next" title="「HNOI 2017」单旋 - BIT + set">
+                  <i class="fa fa-chevron-left"></i> 「HNOI 2017」单旋 - BIT + set
                 </a>
               
             </div>
@@ -470,10 +457,6 @@ Analytics"></a></div></noscript>
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/08/13/dsu-on-tree-rev1/" rel="prev" title="dsu on tree 第一轮复习">
-                  dsu on tree 第一轮复习 <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -677,7 +660,7 @@ Analytics"></a></div></noscript>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定义"><span class="nav-number">2.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#性质"><span class="nav-number">3.</span> <span class="nav-text">性质</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#应用"><span class="nav-number">4.</span> <span class="nav-text">应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#求-k-级祖先"><span class="nav-number">4.1.</span> <span class="nav-text">求 \(k\) 级祖先</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化与深度有关的-dp"><span class="nav-number">4.2.</span> <span class="nav-text">优化与深度有关的 DP</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题意"><span class="nav-number">1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解法"><span class="nav-number">2.</span> <span class="nav-text">解法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
             
 
           </div>
