@@ -56,14 +56,19 @@
   };
 </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Tiger0132 的小站">
-<meta property="og:url" content="https://noi.solutions/tags/HNOI/index.html">
+  <meta name="description" content="题意 如果一个数不含前导零且相邻两位的绝对差 \(\ge2\)，那么称之为 windy 数。 求 \([l,r]\) 的 windy 数数量。 \(1\le l,r\le2\times10^9\)。">
+<meta name="keywords" content="DP,数位 DP,SCOI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「SCOI 2009」windy 数 - 数位 DP">
+<meta property="og:url" content="https://noi.solutions/2019/10/24/scoi2009-windy-sol/index.html">
 <meta property="og:site_name" content="Tiger0132 的小站">
+<meta property="og:description" content="题意 如果一个数不含前导零且相邻两位的绝对差 \(\ge2\)，那么称之为 windy 数。 求 \([l,r]\) 的 windy 数数量。 \(1\le l,r\le2\times10^9\)。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-24T09:22:28.099Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tiger0132 的小站">
-  <link rel="canonical" href="https://noi.solutions/tags/HNOI/">
+<meta name="twitter:title" content="「SCOI 2009」windy 数 - 数位 DP">
+<meta name="twitter:description" content="题意 如果一个数不含前导零且相邻两位的绝对差 \(\ge2\)，那么称之为 windy 数。 求 \([l,r]\) 的 windy 数数量。 \(1\le l,r\le2\times10^9\)。">
+  <link rel="canonical" href="https://noi.solutions/2019/10/24/scoi2009-windy-sol/">
 
 
 <script id="page-configurations">
@@ -71,13 +76,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>标签: HNOI | Tiger0132 的小站</title>
+  <title>「SCOI 2009」windy 数 - 数位 DP | Tiger0132 的小站</title>
   
 
 
@@ -280,97 +285,205 @@ Analytics"></a></div></noscript>
         <div class="content-wrap">
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-          <div id="content" class="content ">
+          <div id="content" class="content page-post-detail">
             
 
-  
-  
-  
-  <div class="post-block tag">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>HNOI<small>标签</small>
-        </h2>
-      </div>
-
-      
-
-  
-  
-  
-
-  
+  <div id="posts" class="posts-expand">
     
-    <div class="collection-title">
-      <h2 class="archive-year" id="archive-year-2019">2019</h2>
-    </div>
-  
-  
+    <div class="reading-progress-bar"></div>
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://noi.solutions/2019/10/24/scoi2009-windy-sol/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tiger0132">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tiger0132 的小站">
+    </span>
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2019/10/18/hnoi2017-spaly-sol/" itemprop="url">
+          <h2 class="post-title" itemprop="name headline">「SCOI 2009」windy 数 - 数位 DP
+
             
-              <span itemprop="name">「HNOI 2017」单旋 - BIT + set</span>
-            
-          </a>
+          </h2>
         
-      </h3>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-10-18T23:00:45+08:00"
-              content="2019-10-18">
-          10-18
-        </time>
-      </div>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              
+              
 
-    </header>
-  </article>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
 
+              
+                
+              
 
+              <time title="创建时间：2019-10-24 16:34:17 / 修改时间：17:22:28" itemprop="dateCreated datePublished" datetime="2019-10-24T16:34:17+08:00">2019-10-24</time>
+            </span>
+          
+            
 
+            
+          
+
+          
+            <span class="post-meta-item" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+            
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/10/24/scoi2009-windy-sol/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/24/scoi2009-windy-sol/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="题意">题意</h1>
+<p>如果一个数不含前导零且相邻两位的绝对差 <span class="math inline">\(\ge2\)</span>，那么称之为 windy 数。</p>
+<p>求 <span class="math inline">\([l,r]\)</span> 的 windy 数数量。</p>
+<p><span class="math inline">\(1\le l,r\le2\times10^9\)</span>。</p>
+<a id="more"></a>
+<h1 id="解法">解法</h1>
+<p>数位 DP 模板题。</p>
+<p>注意到 <span class="math inline">\([l,r]\)</span> 的答案等于 <span class="math inline">\([0,r]\)</span> 的答案减去 <span class="math inline">\([0,l)\)</span> 的，所以我们只考虑 <span class="math inline">\([0,r]\)</span> 这个区间的计算。</p>
+<p>令 <span class="math inline">\(dp_{i,j}\)</span> 为长度为 <span class="math inline">\(i\)</span> 的数字中，最高位是 <span class="math inline">\(j\)</span> 的方案数。</p>
+<p>我们先假设 <span class="math inline">\(l=0,r=10^n-1\)</span>。那么在这种情况下，答案就是 <span class="math inline">\(\sum_{i=0}^9dp_{n,i}\)</span>。</p>
+<p>问题来了，既然 <span class="math inline">\(dp_{n,0}\)</span> 是最高位为 <span class="math inline">\(0\)</span> 的方案数，那么 <span class="math inline">\(012, 001\)</span> 这种就不会被计入。所以我们要区分 <strong>前导零</strong> 和 <strong>数位上的零</strong>。</p>
+<p>而且如果 <span class="math inline">\(r\ne10^n-1\)</span>，例如 <span class="math inline">\(r=1926\)</span>，那么 <span class="math inline">\(1949\)</span> 这种数就不能选。</p>
+<p>注意到转移的限制比较复杂，考虑使用记搜实现（虽然递推也可以）。</p>
+<p>开四个参数 <span class="math inline">\(\texttt{i, j, tr, lim}\)</span>，分别代表 DP 的下标、以前的位是不是前导零、以前的位是不是和 <span class="math inline">\(r\)</span> 相同。</p>
+<p>如果 <span class="math inline">\(\texttt{tr = lim = false}\)</span>，那么答案就是 <span class="math inline">\(dp_{i,j}\)</span>，可以记忆化。</p>
+<p>如果 <span class="math inline">\(\texttt{tr = true}\)</span>，那么转移的时候不需要考虑绝对差的限制，所以您可以将 <span class="math inline">\(j\)</span> 设为 <span class="math inline">\(-2\)</span>。</p>
+<p>在转移的过程中，一定要记得把 <span class="math inline">\(\texttt{tr}\)</span> 和 <span class="math inline">\(\texttt{lim}\)</span> 更新。</p>
+<h1 id="代码">代码</h1>
+<div class="spoiler collapsed"><div class="spoiler-title">代码</div><div class="spoiler-content"><figure class="highlight cpp">
+<figcaption>
+<span>SCOI2009-windy.cpp</span>
+</figcaption>
+<table>
+<tr>
+<td class="gutter">
+<pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre>
+</td>
+<td class="code">
+<pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">22</span>][<span class="number">22</span>], a[<span class="number">22</span>], len;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">bool</span> tr, <span class="keyword">bool</span> lim)</span> </span>&#123;  <span class="comment">// len -&gt; 0</span></span><br><span class="line">    <span class="keyword">if</span> (!x) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (!lim &amp;&amp; dp[x][y] != <span class="number">-1</span>) <span class="keyword">return</span> dp[x][y];</span><br><span class="line">    <span class="keyword">int</span> ret = <span class="number">0</span>, rb = lim ? a[x] : <span class="number">9</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= rb; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">abs</span>(y - i) &lt; <span class="number">2</span>) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">if</span> (tr &amp;&amp; !i)</span><br><span class="line">            ret += dfs(x - <span class="number">1</span>, <span class="number">-2</span>, <span class="number">1</span>, lim &amp;&amp; i == rb);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            ret += dfs(x - <span class="number">1</span>, i, <span class="number">0</span>, lim &amp;&amp; i == rb);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!tr &amp;&amp; !lim) dp[x][y] = ret;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">calc</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (len = <span class="number">0</span>; x; x /= <span class="number">10</span>) a[++len] = x % <span class="number">10</span>;</span><br><span class="line">    <span class="built_in">memset</span>(dp, <span class="number">-1</span>, <span class="keyword">sizeof</span> dp);</span><br><span class="line">    <span class="keyword">return</span> dfs(len, <span class="number">-2</span>, <span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> l, r;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;l, &amp;r);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>, calc(r) - calc(l - <span class="number">1</span>));</span><br><span class="line">&#125;</span><br></pre>
+</td>
+</tr>
+</table>
+</figure>
+</div></div>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
     </div>
 
+    
+    
+    
+        
+      
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>tiger0132</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://noi.solutions/2019/10/24/scoi2009-windy-sol/" title="「SCOI 2009」windy 数 - 数位 DP">https://noi.solutions/2019/10/24/scoi2009-windy-sol/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li>
+</ul>
+</div>
+
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/DP/" rel="tag"># DP</a>
+            
+              <a href="/tags/数位-DP/" rel="tag"># 数位 DP</a>
+            
+              <a href="/tags/SCOI/" rel="tag"># SCOI</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/10/22/51nod-1559-sol/" rel="next" title="「51nod」1559 车和矩形 - 扫描线 + 线段树">
+                  <i class="fa fa-chevron-left"></i> 「51nod」1559 车和矩形 - 扫描线 + 线段树
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
   </div>
   
   
   
+  </article>
 
-  
-
+  </div>
 
 
           </div>
           
+    
+    <div class="comments" id="comments"></div>
+  
 
         </div>
           
@@ -385,8 +498,17 @@ Analytics"></a></div></noscript>
 
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -539,6 +661,23 @@ Analytics"></a></div></noscript>
 
         </div>
       </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题意"><span class="nav-number">1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解法"><span class="nav-number">2.</span> <span class="nav-text">解法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
     </div>
   </aside>
@@ -761,6 +900,10 @@ if ($('body').find('pre.mermaid').length) {
 
 
   
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+
     
 
 <script>
