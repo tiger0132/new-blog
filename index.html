@@ -1821,6 +1821,18 @@ if ($('body').find('pre.mermaid').length) {
 
 
 
+<script pjax>
+  (function (document) {
+    [].forEach.call(document.getElementsByClassName('spoiler'), function(panel) {
+      panel.getElementsByClassName('spoiler-title')[0].onclick = function() {
+        panel.classList.toggle("collapsed");
+        panel.classList.toggle("expanded");
+      }
+    });
+  })(document);
+</script>
+
+
     <div id="pjax">
 
   
