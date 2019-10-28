@@ -56,18 +56,18 @@
   };
 </script>
 
-  <meta name="description" content="题意 求 \([l,r]\) 中，可以被非 \(0\) 的各位数整除的数的个数。多次询问。 \(1\le t\le10,1\le l\le r\le9\cdot10^{18}\)。 解法 因为 \(a\bmod(k\cdot b)\bmod b=a\bmod b\)，而且有 \(\operatorname{lcm}(1,2,\ldots,10)=2520\)，所以我们只需要记录这个数 \({}\b">
+  <meta name="description" content="题意 求 \([l,r]\) 中，可以被非 \(0\) 的各位数整除的数的个数。多次询问。 \(1\le t\le10,1\le l\le r\le9\cdot10^{18}\)。">
 <meta name="keywords" content="Codeforces,DP,数位 DP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「Codeforces 55D」Beautiful numbers - 数位 DP">
 <meta property="og:url" content="https://noi.solutions/2019/10/29/cf55d-sol/index.html">
 <meta property="og:site_name" content="Tiger0132 的小站">
-<meta property="og:description" content="题意 求 \([l,r]\) 中，可以被非 \(0\) 的各位数整除的数的个数。多次询问。 \(1\le t\le10,1\le l\le r\le9\cdot10^{18}\)。 解法 因为 \(a\bmod(k\cdot b)\bmod b=a\bmod b\)，而且有 \(\operatorname{lcm}(1,2,\ldots,10)=2520\)，所以我们只需要记录这个数 \({}\b">
+<meta property="og:description" content="题意 求 \([l,r]\) 中，可以被非 \(0\) 的各位数整除的数的个数。多次询问。 \(1\le t\le10,1\le l\le r\le9\cdot10^{18}\)。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-28T21:56:34.376Z">
+<meta property="og:updated_time" content="2019-10-28T21:59:45.466Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「Codeforces 55D」Beautiful numbers - 数位 DP">
-<meta name="twitter:description" content="题意 求 \([l,r]\) 中，可以被非 \(0\) 的各位数整除的数的个数。多次询问。 \(1\le t\le10,1\le l\le r\le9\cdot10^{18}\)。 解法 因为 \(a\bmod(k\cdot b)\bmod b=a\bmod b\)，而且有 \(\operatorname{lcm}(1,2,\ldots,10)=2520\)，所以我们只需要记录这个数 \({}\b">
+<meta name="twitter:description" content="题意 求 \([l,r]\) 中，可以被非 \(0\) 的各位数整除的数的个数。多次询问。 \(1\le t\le10,1\le l\le r\le9\cdot10^{18}\)。">
   <link rel="canonical" href="https://noi.solutions/2019/10/29/cf55d-sol/">
 
 
@@ -331,7 +331,7 @@ Analytics"></a></div></noscript>
                 
               
 
-              <time title="创建时间：2019-10-29 05:46:46 / 修改时间：05:56:34" itemprop="dateCreated datePublished" datetime="2019-10-29T05:46:46+08:00">2019-10-29</time>
+              <time title="创建时间：2019-10-29 05:46:46 / 修改时间：05:59:45" itemprop="dateCreated datePublished" datetime="2019-10-29T05:46:46+08:00">2019-10-29</time>
             </span>
           
             
@@ -379,6 +379,7 @@ Analytics"></a></div></noscript>
         <h1 id="题意">题意</h1>
 <p>求 <span class="math inline">\([l,r]\)</span> 中，可以被非 <span class="math inline">\(0\)</span> 的各位数整除的数的个数。多次询问。</p>
 <p><span class="math inline">\(1\le t\le10,1\le l\le r\le9\cdot10^{18}\)</span>。</p>
+<a id="more"></a>
 <h1 id="解法">解法</h1>
 <p>因为 <span class="math inline">\(a\bmod(k\cdot b)\bmod b=a\bmod b\)</span>，而且有 <span class="math inline">\(\operatorname{lcm}(1,2,\ldots,10)=2520\)</span>，所以我们只需要记录这个数 <span class="math inline">\({}\bmod2520\)</span> 的值。</p>
 <p>令 <span class="math inline">\(dp_{x,rem,mod}\)</span> 为前 <span class="math inline">\(i\)</span> 位，<span class="math inline">\({}\bmod2520=rem\)</span> 的数中，各位数的 <span class="math inline">\(\operatorname{lcm}=mod\)</span> 的数的个数。</p>
