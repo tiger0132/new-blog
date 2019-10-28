@@ -56,19 +56,19 @@
   };
 </script>
 
-  <meta name="description" content="题意 维护一个序列，支持区间加、区间赋值、查区间最大值、查区间历史最大值。 \(1\le n,m\le10^5\)。">
-<meta name="keywords" content="线段树,数据结构,好题">
+  <meta name="description" content="题意 \(n\) 个物品，第 \(i\) 个物品有 \(l_i\) 个，价格是 \(p_i\)，权值是 \(d_i\)。 多次查询，每次查询 \(g,L\)，求买 \(L\) 个物品，所花钱数 \(\le g\) 时，所有购买的物品中权值最小值的最大值。 \(1\le n,m\le10^5,1\le l_i,p_i,d_i\le10^5,1\le g_j,L_j\le10^{18}\)。 这只是原">
+<meta name="keywords" content="线段树,CTSC,主席树">
 <meta property="og:type" content="article">
-<meta property="og:title" content="「BZOJ 3064」CPU 监控 - 线段树">
-<meta property="og:url" content="https://noi.solutions/2019/09/04/bzoj3064-sol/index.html">
+<meta property="og:title" content="「CTSC 2018」混合果汁 - 主席树">
+<meta property="og:url" content="https://noi.solutions/2019/10/29/ctsc2018-juice-sol/index.html">
 <meta property="og:site_name" content="Tiger0132 的小站">
-<meta property="og:description" content="题意 维护一个序列，支持区间加、区间赋值、查区间最大值、查区间历史最大值。 \(1\le n,m\le10^5\)。">
+<meta property="og:description" content="题意 \(n\) 个物品，第 \(i\) 个物品有 \(l_i\) 个，价格是 \(p_i\)，权值是 \(d_i\)。 多次查询，每次查询 \(g,L\)，求买 \(L\) 个物品，所花钱数 \(\le g\) 时，所有购买的物品中权值最小值的最大值。 \(1\le n,m\le10^5,1\le l_i,p_i,d_i\le10^5,1\le g_j,L_j\le10^{18}\)。 这只是原">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-18T10:44:13.045Z">
+<meta property="og:updated_time" content="2019-10-28T21:15:20.989Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="「BZOJ 3064」CPU 监控 - 线段树">
-<meta name="twitter:description" content="题意 维护一个序列，支持区间加、区间赋值、查区间最大值、查区间历史最大值。 \(1\le n,m\le10^5\)。">
-  <link rel="canonical" href="https://noi.solutions/2019/09/04/bzoj3064-sol/">
+<meta name="twitter:title" content="「CTSC 2018」混合果汁 - 主席树">
+<meta name="twitter:description" content="题意 \(n\) 个物品，第 \(i\) 个物品有 \(l_i\) 个，价格是 \(p_i\)，权值是 \(d_i\)。 多次查询，每次查询 \(g,L\)，求买 \(L\) 个物品，所花钱数 \(\le g\) 时，所有购买的物品中权值最小值的最大值。 \(1\le n,m\le10^5,1\le l_i,p_i,d_i\le10^5,1\le g_j,L_j\le10^{18}\)。 这只是原">
+  <link rel="canonical" href="https://noi.solutions/2019/10/29/ctsc2018-juice-sol/">
 
 
 <script id="page-configurations">
@@ -82,7 +82,7 @@
   };
 </script>
 
-  <title>「BZOJ 3064」CPU 监控 - 线段树 | Tiger0132 的小站</title>
+  <title>「CTSC 2018」混合果汁 - 主席树 | Tiger0132 的小站</title>
   
 
 
@@ -297,7 +297,7 @@ Analytics"></a></div></noscript>
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://noi.solutions/2019/09/04/bzoj3064-sol/">
+    <link itemprop="mainEntityOfPage" href="https://noi.solutions/2019/10/29/ctsc2018-juice-sol/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="tiger0132">
@@ -311,7 +311,7 @@ Analytics"></a></div></noscript>
       <header class="post-header">
 
         
-          <h2 class="post-title" itemprop="name headline">「BZOJ 3064」CPU 监控 - 线段树
+          <h2 class="post-title" itemprop="name headline">「CTSC 2018」混合果汁 - 主席树
 
             
           </h2>
@@ -331,33 +331,12 @@ Analytics"></a></div></noscript>
                 
               
 
-              <time title="创建时间：2019-09-04 06:40:14" itemprop="dateCreated datePublished" datetime="2019-09-04T06:40:14+08:00">2019-09-04</time>
+              <time title="创建时间：2019-10-29 05:08:57 / 修改时间：05:15:20" itemprop="dateCreated datePublished" datetime="2019-10-29T05:08:57+08:00">2019-10-29</time>
             </span>
           
             
 
             
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-18 18:44:13" itemprop="dateModified" datetime="2019-09-18T18:44:13+08:00">2019-09-18</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Solutions/" itemprop="url" rel="index"><span itemprop="name">Solutions</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -380,8 +359,8 @@ Analytics"></a></div></noscript>
       
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2019/09/04/bzoj3064-sol/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/09/04/bzoj3064-sol/" itemprop="commentCount"></span>
+    <a title="valine" href="/2019/10/29/ctsc2018-juice-sol/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/29/ctsc2018-juice-sol/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -398,59 +377,38 @@ Analytics"></a></div></noscript>
 
       
         <h1 id="题意">题意</h1>
-<p>维护一个序列，支持区间加、区间赋值、查区间最大值、查区间历史最大值。</p>
-<p><span class="math inline">\(1\le n,m\le10^5\)</span>。</p>
+<p><span class="math inline">\(n\)</span> 个物品，第 <span class="math inline">\(i\)</span> 个物品有 <span class="math inline">\(l_i\)</span> 个，价格是 <span class="math inline">\(p_i\)</span>，权值是 <span class="math inline">\(d_i\)</span>。</p>
+<p>多次查询，每次查询 <span class="math inline">\(g,L\)</span>，求买 <span class="math inline">\(L\)</span> 个物品，所花钱数 <span class="math inline">\(\le g\)</span> 时，所有购买的物品中权值最小值的最大值。</p>
+<p><span class="math inline">\(1\le n,m\le10^5,1\le l_i,p_i,d_i\le10^5,1\le g_j,L_j\le10^{18}\)</span>。</p>
+<p>这只是原题面的一个等价描述，下文中的「解法」使用的是原题面中的名词，与上文不同。</p>
 <a id="more"></a>
 <h1 id="解法">解法</h1>
-<p>神仙题！</p>
-<p>首先考虑 lazy tag 的意义：它们表示的是一段操作序列合并后的操作。</p>
-<p>比如三个操作 <code>add 10, set 1, add 5</code> 就可以表示为 <code>set 6</code> 或者 <code>set 1, add 5</code>。</p>
-<p>但是这样丢失了信息，在一般的线段树中，<code>set 1</code> 之后，<code>add 10</code> 对答案没有影响，所以这部分信息就被丢弃了。但是这里要维护历史最大值，就不能丢失这部分信息。</p>
-<p>还注意一点：进行了区间 <code>set</code> 操作后，所有的 <code>add</code> 都可以转化成 <code>set</code>，这样我们就可以把操作序列转换成 <code>add, add, ..., add, set, set, ..., set</code> 的形式，下面的讨论我们都使用这种方式。</p>
-<hr>
-<p>首先我们维护两个信息 <code>max</code> 和 <code>hmax</code>，代表当前和历史最大值。</p>
-<p>接下来考虑怎么 pushup。发现只需要上传 <code>max</code> 和 <code>hmax</code> 就好了。</p>
-<p>然后我们维护四个标记 <code>add, set, hadd, hset</code>，它们的意义分别如下：</p>
-<ul>
-<li><code>add</code>：当前操作序列中，所有 <code>add</code> 操作的和。</li>
-<li><code>set</code>：当前操作序列中，最后一次 <code>set</code> 操作的值。</li>
-<li><code>hadd</code>：当前操作序列中，所有 <code>add</code> 操作的历史最大值。</li>
-<li><code>hset</code>：当前操作序列中，所有 <code>set</code> 操作的历史最大值。</li>
-</ul>
-<hr>
-<p>然后考虑怎么 pushdown。</p>
-<p>注意到我们现在有两串操作序列，一串是 <code>add</code>，然后紧接着一串 <code>set</code> 操作。</p>
-<p>考虑这样一个操作序列：<code>add 10, add -10, set 0</code>。</p>
-<p>如果只要维护当前最大值，那么答案显然是 <span class="math inline">\(0\)</span>。</p>
-<p>但是历史最大值很有可能会 <span class="math inline">\(&gt;0\)</span>，因为有一次 <code>add 10</code> 的操作。</p>
-<p>同理，如果有一个操作序列 <code>set 10, set 0</code>，那么历史最大值肯定是 <span class="math inline">\(\ge10\)</span> 的，而当前最大值是 <span class="math inline">\(0\)</span>。这就是为什么我们需要维护 <code>hadd</code> 和 <code>hset</code>。</p>
-<p>所以我们在进行 <code>add</code> 和 <code>set</code> 操作时记录历史最大值。在 pushdown 的时候下传至子节点。</p>
-<p>具体的流程在 <code>add</code> 和 <code>set</code> 之后详细阐述。</p>
-<hr>
-<p>考虑怎么区间加（再次声明，这里的区间加 <strong>不包括</strong> <code>set</code> 之后的操作，它们已经被转化为了 <code>set</code> 操作）。</p>
-<p>定义函数 <span class="math inline">\(\operatorname{addp}(v,h)\)</span>，其中 <span class="math inline">\(v\)</span> 代表当前加的值，<span class="math inline">\(h\)</span> 代表历史操作中，<code>add</code> 取得的最大值。它要做的事情是这样的：</p>
-<ul>
-<li>尝试用 <span class="math inline">\(\texttt{add}+h\)</span> 更新 <code>hadd</code>（取最大值）。</li>
-<li>尝试用 <span class="math inline">\(\texttt{max}+h\)</span> 更新 <code>hmax</code>（取最大值）。</li>
-<li><code>max</code> 和 <code>add</code> <span class="math inline">\(+v\)</span>。</li>
-</ul>
-<p>那么在进行区间加操作的时候，如果我们要对某个区间 <span class="math inline">\(+v\)</span>，可以直接调用 <span class="math inline">\(\operatorname{addp}(v,v)\)</span>。</p>
-<hr>
-<p>然后考虑怎么区间 <code>set</code>。</p>
-<p>定义函数 <span class="math inline">\(\operatorname{setp}(v,h)\)</span>，参数的解释同上。然后考虑要做些什么：</p>
-<ul>
-<li>如果是第一次进行 <code>set</code> 操作，那么要初始化 <code>hset</code> 为 <span class="math inline">\(h\)</span>，因为以前没有进行过 <code>set</code> 操作。</li>
-<li>如果以前进行过 <code>set</code> 操作，那么尝试用 <span class="math inline">\(h\)</span> 更新 <code>hset</code>（取最大值）。</li>
-<li>尝试用 <span class="math inline">\(h\)</span> 更新 <code>hmax</code>（取最大值）。</li>
-<li>将 <code>set</code> 和 <code>max</code> 更新为 <span class="math inline">\(v\)</span>。</li>
-</ul>
-<hr>
-<p>终于到<del>激动人心</del>的 pushdown 了。</p>
-<p>首先我们应该按照先 <code>add</code> 后 <code>set</code> 的顺序 pushdown。</p>
-<p>假设我们现在在 <span class="math inline">\(x\)</span> 点，标记要下传到子节点 <span class="math inline">\(y\)</span>。</p>
-<p>先下传 <code>add</code>。如果 <span class="math inline">\(y\)</span> 点没有进行过 <code>set</code>，那么 <span class="math inline">\(\operatorname{addp}(\texttt{add}_x,\texttt{hadd}_x)\)</span>。如果 <span class="math inline">\(y\)</span> 点已经有 <code>set</code> 操作了，那么 <span class="math inline">\(\operatorname{setp}(\texttt{set}_y+\texttt{add}_x,\texttt{set}_y+\texttt{hadd}_x)\)</span>。</p>
-<p>再下传 <code>set</code>。这个直接 <span class="math inline">\(\operatorname{setp}(\texttt{set}_x,\texttt{hset}_x)\)</span> 就好了。</p>
-<p>最后清空 <span class="math inline">\(x\)</span> 的 <code>add, set, hadd, hset</code>，以及是否 <code>set</code> 过的标记。</p>
+<p>首先很容易得到一个贪心策略：如果对于某个 <span class="math inline">\(k\)</span>，<span class="math inline">\(\sum_{d_i\ge k}l_i\ge L\)</span>，那么用的钱最少的方法一定是从 <span class="math inline">\(d_i\ge k\)</span> 里价格最小的开始，贪心地往上取。如果做完之后用的钱仍然 <span class="math inline">\(\ge g\)</span>，那么称这个 <span class="math inline">\(k\)</span> 为 <strong>合法的</strong>。答案就是所有的 <strong>合法的</strong> <span class="math inline">\(k\)</span> 里面最大的。</p>
+<p>显然，「贪心地往上取」可以将果汁按价格排序，然后通过各种二分做到单次 <span class="math inline">\(O(\log n)\)</span>。</p>
+<p>注意到这个 <strong>合法性</strong> 也是单调的，也就是说，如果一个数 <span class="math inline">\(k\)</span> 合法，那么比它小的显然都合法。</p>
+<p>所以我们可以先二分 <span class="math inline">\(k\)</span>，然后对每一个二分出来的 <span class="math inline">\(k\)</span> 二分 check 合法性。</p>
+<p><strong>注意到一个重要的性质：cdecl 不会整体二分。所以我们必须使用在线做法。</strong></p>
+<p>那么问题就变成了：在序列中插入一个数，在历史版本上进行一些二分操作。</p>
+<p>可持久化序列！主席树！然后在历史版本的线段树上二分即可。</p>
+<p><strong>注意一个细节：二分的时候，如果发现线段树里的 <span class="math inline">\(\bf\sum l_i\)</span> 比查询的 <span class="math inline">\(\bf L\)</span> 小，那么直接返回 INF。</strong></p>
+<p>现在感觉主席树挺自然的，不像刚学的时候那么突兀了（</p>
+<h1 id="代码">代码</h1>
+<div class="spoiler collapsed"><div class="spoiler-title">代码</div><div class="spoiler-content"><figure class="highlight cpp">
+<figcaption>
+<span>CTSC2018-juice.cpp</span>
+</figcaption>
+<table>
+<tr>
+<td class="gutter">
+<pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre>
+</td>
+<td class="code">
+<pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> L ch][0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> R ch][1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mid (l + r) / 2</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span> + <span class="number">51</span>, M = N * <span class="number">32</span>;</span><br><span class="line"><span class="keyword">int</span> ch[M][<span class="number">2</span>], sv[M], sw[M], nc;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cl</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (++nc)[L] = x[L], nc[R] = x[R], nc[sv] = x[sv], nc[sw] = x[sw], nc;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ins</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> v, <span class="keyword">int</span> w)</span> </span>&#123;</span><br><span class="line">    x[sv] += v * w, x[sw] += w;</span><br><span class="line">    <span class="keyword">if</span> (l == r) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span> (v &lt;= mid) <span class="keyword">return</span> ins(x[L] = cl(x[L]), l, mid, v, w);</span><br><span class="line">    ins(x[R] = cl(x[R]), mid + <span class="number">1</span>, r, v, w);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">qry</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> w)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (l == r) <span class="keyword">return</span> w * l;</span><br><span class="line">    <span class="keyword">if</span> (w &lt;= x[L][sw]) <span class="keyword">return</span> qry(x[L], l, mid, w);</span><br><span class="line">    <span class="keyword">return</span> x[L][sv] + qry(x[R], mid + <span class="number">1</span>, r, w - x[L][sw]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> d, p, l;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span>&lt;(<span class="keyword">const</span> node&amp; r) <span class="keyword">const</span> &#123; <span class="keyword">return</span> d &lt; r.d; &#125;</span><br><span class="line">&#125; a[N];</span><br><span class="line"><span class="keyword">int</span> n, m, x, y, z, l, r, rt[N];</span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>, &amp;n, &amp;m), a[<span class="number">0</span>].d = <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) <span class="built_in">scanf</span>(<span class="string">"%lld%lld%lld"</span>, &amp;x, &amp;y, &amp;z), a[i] = &#123;x, y, z&#125;;</span><br><span class="line">    <span class="built_in">std</span>::sort(a + <span class="number">1</span>, a + n + <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = n; i &gt;= <span class="number">1</span>; i--) ins(rt[i] = cl(rt[i + <span class="number">1</span>]), <span class="number">1</span>, N, a[i].p, a[i].l);</span><br><span class="line">    <span class="keyword">while</span> (m--) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>, &amp;x, &amp;y);</span><br><span class="line">        <span class="keyword">for</span> (l = <span class="number">1</span>, r = N; l &lt;= r;)</span><br><span class="line">            <span class="keyword">if</span> (y &lt;= rt[mid][sw] &amp;&amp; qry(rt[mid], <span class="number">1</span>, N, y) &lt;= x)</span><br><span class="line">                l = mid + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                r = mid - <span class="number">1</span>;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, a[l - <span class="number">1</span>].d);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre>
+</td>
+</tr>
+</table>
+</figure>
+</div></div>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
     </div>
 
@@ -467,7 +425,7 @@ Analytics"></a></div></noscript>
     <strong>本文作者： </strong>tiger0132</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://noi.solutions/2019/09/04/bzoj3064-sol/" title="「BZOJ 3064」CPU 监控 - 线段树">https://noi.solutions/2019/09/04/bzoj3064-sol/</a>
+    <a href="https://noi.solutions/2019/10/29/ctsc2018-juice-sol/" title="「CTSC 2018」混合果汁 - 主席树">https://noi.solutions/2019/10/29/ctsc2018-juice-sol/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li>
@@ -484,9 +442,9 @@ Analytics"></a></div></noscript>
             
               <a href="/tags/线段树/" rel="tag"># 线段树</a>
             
-              <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
+              <a href="/tags/CTSC/" rel="tag"># CTSC</a>
             
-              <a href="/tags/好题/" rel="tag"># 好题</a>
+              <a href="/tags/主席树/" rel="tag"># 主席树</a>
             
           </div>
         
@@ -496,8 +454,8 @@ Analytics"></a></div></noscript>
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/08/23/fast-gcd-notes/" rel="next" title="O(n)-O(1) GCD 学习笔记">
-                  <i class="fa fa-chevron-left"></i> O(n)-O(1) GCD 学习笔记
+                <a href="/2019/10/24/scoi2009-windy-sol/" rel="next" title="「SCOI 2009」windy 数 - 数位 DP">
+                  <i class="fa fa-chevron-left"></i> 「SCOI 2009」windy 数 - 数位 DP
                 </a>
               
             </div>
@@ -505,10 +463,6 @@ Analytics"></a></div></noscript>
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/09/06/bzoj3488-sol/" rel="prev" title="「BZOJ 3488」Highways - BIT + DFS 序 + 扫描线">
-                  「BZOJ 3488」Highways - BIT + DFS 序 + 扫描线 <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -720,7 +674,7 @@ Analytics"></a></div></noscript>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题意"><span class="nav-number">1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解法"><span class="nav-number">2.</span> <span class="nav-text">解法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题意"><span class="nav-number">1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解法"><span class="nav-number">2.</span> <span class="nav-text">解法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
             
 
           </div>
