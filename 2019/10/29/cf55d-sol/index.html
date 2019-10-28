@@ -56,14 +56,19 @@
   };
 </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Tiger0132 的小站">
-<meta property="og:url" content="https://noi.solutions/tags/状压-DP/index.html">
+  <meta name="description" content="题意 求 \([l,r]\) 中，可以被非 \(0\) 的各位数整除的数的个数。多次询问。 \(1\le t\le10,1\le l\le r\le9\cdot10^{18}\)。 解法 因为 \(a\bmod(k\cdot b)\bmod b=a\bmod b\)，而且有 \(\operatorname{lcm}(1,2,\ldots,10)=2520\)，所以我们只需要记录这个数 \({}\b">
+<meta name="keywords" content="Codeforces,DP,数位 DP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「Codeforces 55D」Beautiful numbers - 数位 DP">
+<meta property="og:url" content="https://noi.solutions/2019/10/29/cf55d-sol/index.html">
 <meta property="og:site_name" content="Tiger0132 的小站">
+<meta property="og:description" content="题意 求 \([l,r]\) 中，可以被非 \(0\) 的各位数整除的数的个数。多次询问。 \(1\le t\le10,1\le l\le r\le9\cdot10^{18}\)。 解法 因为 \(a\bmod(k\cdot b)\bmod b=a\bmod b\)，而且有 \(\operatorname{lcm}(1,2,\ldots,10)=2520\)，所以我们只需要记录这个数 \({}\b">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-28T21:56:34.376Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tiger0132 的小站">
-  <link rel="canonical" href="https://noi.solutions/tags/状压-DP/">
+<meta name="twitter:title" content="「Codeforces 55D」Beautiful numbers - 数位 DP">
+<meta name="twitter:description" content="题意 求 \([l,r]\) 中，可以被非 \(0\) 的各位数整除的数的个数。多次询问。 \(1\le t\le10,1\le l\le r\le9\cdot10^{18}\)。 解法 因为 \(a\bmod(k\cdot b)\bmod b=a\bmod b\)，而且有 \(\operatorname{lcm}(1,2,\ldots,10)=2520\)，所以我们只需要记录这个数 \({}\b">
+  <link rel="canonical" href="https://noi.solutions/2019/10/29/cf55d-sol/">
 
 
 <script id="page-configurations">
@@ -71,13 +76,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>标签: 状压 DP | Tiger0132 的小站</title>
+  <title>「Codeforces 55D」Beautiful numbers - 数位 DP | Tiger0132 的小站</title>
   
 
 
@@ -280,130 +285,196 @@ Analytics"></a></div></noscript>
         <div class="content-wrap">
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-          <div id="content" class="content ">
+          <div id="content" class="content page-post-detail">
             
 
-  
-  
-  
-  <div class="post-block tag">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>状压 DP<small>标签</small>
-        </h2>
-      </div>
-
-      
-
-  
-  
-  
-
-  
+  <div id="posts" class="posts-expand">
     
-    <div class="collection-title">
-      <h2 class="archive-year" id="archive-year-2019">2019</h2>
-    </div>
-  
-  
+    <div class="reading-progress-bar"></div>
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://noi.solutions/2019/10/29/cf55d-sol/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tiger0132">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tiger0132 的小站">
+    </span>
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2019/10/29/noip2017-treasure/" itemprop="url">
+          <h2 class="post-title" itemprop="name headline">「Codeforces 55D」Beautiful numbers - 数位 DP
+
             
-              <span itemprop="name">「NOIp 2017」宝藏 - 状压 DP</span>
-            
-          </a>
+          </h2>
         
-      </h3>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-10-29T05:15:55+08:00"
-              content="2019-10-29">
-          10-29
-        </time>
-      </div>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              
+              
 
-    </header>
-  </article>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
 
+              
+                
+              
 
-
-  
-  
-  
-
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-          <a class="post-title-link" href="/2019/08/12/luogu-p2210-sol/" itemprop="url">
+              <time title="创建时间：2019-10-29 05:46:46 / 修改时间：05:56:34" itemprop="dateCreated datePublished" datetime="2019-10-29T05:46:46+08:00">2019-10-29</time>
+            </span>
+          
             
-              <span itemprop="name">「洛谷 P2210」Haywire - 状压 DP</span>
+
             
-          </a>
+          
+
+          
+            <span class="post-meta-item" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+            
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
         
-      </h3>
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/10/29/cf55d-sol/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/29/cf55d-sol/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-08-12T16:32:56+08:00"
-              content="2019-08-12">
-          08-12
-        </time>
-      </div>
+        </div>
+      </header>
 
-    </header>
-  </article>
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
-
-
+      
+        <h1 id="题意">题意</h1>
+<p>求 <span class="math inline">\([l,r]\)</span> 中，可以被非 <span class="math inline">\(0\)</span> 的各位数整除的数的个数。多次询问。</p>
+<p><span class="math inline">\(1\le t\le10,1\le l\le r\le9\cdot10^{18}\)</span>。</p>
+<h1 id="解法">解法</h1>
+<p>因为 <span class="math inline">\(a\bmod(k\cdot b)\bmod b=a\bmod b\)</span>，而且有 <span class="math inline">\(\operatorname{lcm}(1,2,\ldots,10)=2520\)</span>，所以我们只需要记录这个数 <span class="math inline">\({}\bmod2520\)</span> 的值。</p>
+<p>令 <span class="math inline">\(dp_{x,rem,mod}\)</span> 为前 <span class="math inline">\(i\)</span> 位，<span class="math inline">\({}\bmod2520=rem\)</span> 的数中，各位数的 <span class="math inline">\(\operatorname{lcm}=mod\)</span> 的数的个数。</p>
+<p>显然有 <span class="math inline">\(\Large\displaystyle dp_{x,rem,mod}=\sum_jdp_{i-1,10rem+j,[j\le1]mod+[j&gt;1]\frac{j\cdot mod}{\gcd(mod,j)}}\)</span>。</p>
+<p>注意到 <span class="math inline">\(2520\)</span> 只有不到 <span class="math inline">\(50\)</span> 个约数，所以我们可以进一步压缩空间。</p>
+<h1 id="代码">代码</h1>
+<div class="spoiler collapsed"><div class="spoiler-title">代码</div><div class="spoiler-content"><figure class="highlight cpp">
+<figcaption>
+<span>CF55D.cpp</span>
+</figcaption>
+<table>
+<tr>
+<td class="gutter">
+<pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre>
+</td>
+<td class="code">
+<pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">22</span>], mp[<span class="number">2555</span>], c, len;</span><br><span class="line">ll dp[<span class="number">22</span>][<span class="number">2555</span>][<span class="number">55</span>];</span><br><span class="line"><span class="function">ll <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> rem, <span class="keyword">int</span> mod, <span class="keyword">bool</span> lim)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!x) <span class="keyword">return</span> !(rem % mod);</span><br><span class="line">    <span class="keyword">if</span> (!lim &amp;&amp; dp[x][rem][mp[mod]] != <span class="number">-1</span>) <span class="keyword">return</span> dp[x][rem][mp[mod]];</span><br><span class="line">    <span class="keyword">int</span> rb = lim ? a[x] : <span class="number">9</span>;</span><br><span class="line">    ll ret = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= rb; i++)</span><br><span class="line">        ret += dfs(x - <span class="number">1</span>, (rem * <span class="number">10</span> + i) % <span class="number">2520</span>,</span><br><span class="line">                   i &gt; <span class="number">1</span> ? mod * i / <span class="built_in">std</span>::__gcd(mod, i) : mod, lim &amp;&amp; i == a[x]);</span><br><span class="line">    <span class="keyword">if</span> (!lim) dp[x][rem][mp[mod]] = ret;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">calc</span><span class="params">(ll x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (len = <span class="number">0</span>; x; x /= <span class="number">10</span>) a[++len] = x % <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">return</span> dfs(len, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ll l, r;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(dp, <span class="number">-1</span>, <span class="keyword">sizeof</span> dp);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">2520</span>; i++)</span><br><span class="line">        <span class="keyword">if</span> (!(<span class="number">2520</span> % i)) mp[i] = ++c;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">scanf</span>(<span class="string">"%*d"</span>); ~<span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>, &amp;l, &amp;r);)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, calc(r) - calc(l - <span class="number">1</span>));</span><br><span class="line">&#125;</span><br></pre>
+</td>
+</tr>
+</table>
+</figure>
+</div></div>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
     </div>
 
+    
+    
+    
+        
+      
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>tiger0132</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://noi.solutions/2019/10/29/cf55d-sol/" title="「Codeforces 55D」Beautiful numbers - 数位 DP">https://noi.solutions/2019/10/29/cf55d-sol/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li>
+</ul>
+</div>
+
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/Codeforces/" rel="tag"># Codeforces</a>
+            
+              <a href="/tags/DP/" rel="tag"># DP</a>
+            
+              <a href="/tags/数位-DP/" rel="tag"># 数位 DP</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/10/29/noip2017-treasure/" rel="next" title="「NOIp 2017」宝藏 - 状压 DP">
+                  <i class="fa fa-chevron-left"></i> 「NOIp 2017」宝藏 - 状压 DP
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
   </div>
   
   
   
+  </article>
 
-  
-
+  </div>
 
 
           </div>
           
+    
+    <div class="comments" id="comments"></div>
+  
 
         </div>
           
@@ -418,8 +489,17 @@ Analytics"></a></div></noscript>
 
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -578,6 +658,23 @@ Analytics"></a></div></noscript>
 
         </div>
       </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题意"><span class="nav-number">1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解法"><span class="nav-number">2.</span> <span class="nav-text">解法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
     </div>
   </aside>
@@ -813,6 +910,10 @@ if ($('body').find('pre.mermaid').length) {
 
 
   
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+
     
 
 <script>
