@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    exturl: true,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    save_scroll: false,
+    copycode: {"enable":true,"show_result":true,"style":"default"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="题意 有 \(n\) 个人，告诉您每个人以前打比赛的时候赢过的人。假设两个人重新打比赛，结果不会改变，问有哪些人可能获胜。没有重边或自环。 \(1\le n,m\le10^6\)。">
+<meta name="keywords" content="图论,补图,BFS,洛谷,Tarjan,强连通分量">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「洛谷 P2244」选举预测 - 补图 + BFS + SCC">
+<meta property="og:url" content="https://noi.solutions/2019/11/12/luogu-p2244-sol/index.html">
+<meta property="og:site_name" content="Tiger0132 的小站">
+<meta property="og:description" content="题意 有 \(n\) 个人，告诉您每个人以前打比赛的时候赢过的人。假设两个人重新打比赛，结果不会改变，问有哪些人可能获胜。没有重边或自环。 \(1\le n,m\le10^6\)。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-12T00:02:06.364Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="「洛谷 P2244」选举预测 - 补图 + BFS + SCC">
+<meta name="twitter:description" content="题意 有 \(n\) 个人，告诉您每个人以前打比赛的时候赢过的人。假设两个人重新打比赛，结果不会改变，问有哪些人可能获胜。没有重边或自环。 \(1\le n,m\le10^6\)。">
+  <link rel="canonical" href="https://noi.solutions/2019/11/12/luogu-p2244-sol/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>「洛谷 P2244」选举预测 - 补图 + BFS + SCC | Tiger0132 的小站</title>
+  
+
+
+
+
+
+
+
+<!-- Default Statcounter code for New Blog https://noi.solutions/ -->
+<script type="text/javascript">
+var sc_project=12058730; 
+var sc_invisible=1; 
+var sc_security="7a77360b"; 
+var sc_https=1; 
+</script>
+<script type="text/javascript"
+src="https://www.statcounter.com/counter/counter.js" async></script>
+<noscript><div class="statcounter"><a title="Web Analytics"
+href="https://statcounter.com/" target="_blank"><img class="statcounter"
+src="https://c.statcounter.com/12058730/0/7a77360b/1/" alt="Web
+Analytics"></a></div></noscript>
+<!-- End of Statcounter Code -->
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Tiger0132 的小站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">自闭了</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">40</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">3</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">29</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-friends">
+      
+    
+      
+    
+
+    <a href="/friends/" rel="section"><i class="menu-item-icon fa fa-fw fa-link"></i> <br>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
+  </ul>
+
+</nav>
+  <div class="site-search">
+    
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+  </div>
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content page-post-detail">
+            
+
+  <div id="posts" class="posts-expand">
+    
+    <div class="reading-progress-bar"></div>
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://noi.solutions/2019/11/12/luogu-p2244-sol/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tiger0132">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tiger0132 的小站">
+    </span>
+      <header class="post-header">
+
+        
+          <h2 class="post-title" itemprop="name headline">「洛谷 P2244」选举预测 - 补图 + BFS + SCC
+
+            
+          </h2>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-11-12 06:32:06 / 修改时间：08:02:06" itemprop="dateCreated datePublished" datetime="2019-11-12T06:32:06+08:00">2019-11-12</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+            <span class="post-meta-item" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+            
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/11/12/luogu-p2244-sol/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/11/12/luogu-p2244-sol/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="题意">题意</h1>
+<p>有 <span class="math inline">\(n\)</span> 个人，告诉您每个人以前打比赛的时候赢过的人。假设两个人重新打比赛，结果不会改变，问有哪些人可能获胜。没有重边或自环。</p>
+<p><span class="math inline">\(1\le n,m\le10^6\)</span>。</p>
+<a id="more"></a>
+<h1 id="解法">解法</h1>
+<p>挺妙的一道题。我做这题的时候并不能看懂网上现有的题解，于是决定自己写一篇。做法可能与现有的题解有一些出入。</p>
+<p><strong>证明部分比较冗长，如果想直接看题解请自行滑动鼠标滚轮。</strong></p>
+<p>首先这显然是一道图论题。一个非常直接的想法是对于每个关系，从败者向胜者连有向边。然后我们可以观察到下面的一些性质：</p>
+<p>性质一：<br>
+一个强连通分量中，所有的点都有可能成为这个分量里的胜者。</p>
+<p>证明：<br>
+对于强连通分量里的每一个点 <span class="math inline">\(x\)</span>，我们构造一棵包含整个分量的树，使得 <span class="math inline">\(x\)</span> 为根，且每一个点 <span class="math inline">\(y\)</span> 到父节点 <span class="math inline">\(f\)</span> 的边都对应原图上 <span class="math inline">\(y\to f\)</span> 的一条有向边。<br>
+如果对于某个点，这样的树不存在，那么说明某个点无法被加入到树中，即这个点无法到达根。这与强连通分量的性质矛盾。<br>
+而如果存在这棵树，我们就可以通过每一次在树上删掉一个叶子节点的方式比赛，最后剩下的一定是根。</p>
+<p>定理一：<br>
+如果两个强连通分量 <span class="math inline">\(x,y\)</span> 的大小分别为 <span class="math inline">\(w_x,w_y\)</span>，那么如果 <span class="math inline">\(x\)</span> 中的点向 <span class="math inline">\(y\)</span> 中的点正好连了 <span class="math inline">\(w_x\cdot w_y\)</span> 条边，那么在由这两个强连通分量构成的图中，<span class="math inline">\(x\)</span> 里的点不可能成为胜者。否则所有点都可能成为胜者。</p>
+<p>证明：<br>
+如果存在一个强连通分量都里只有一个点，这种情况是平凡的。<br>
+因为不包含在图中的边的方向没有确定，所以如果两个强连通分量之间有一条边没有确定，那么当这条没有确定的边的方向为 <span class="math inline">\(y\to x\)</span> 的时候，整张图都会强连通，即所有点都可能成为胜者。<br>
+如果两个强连通分量之间有 <span class="math inline">\(w_x\cdot w_y\)</span> 条边，那么 <span class="math inline">\(x\)</span> 中的每一个点，都会输给 <span class="math inline">\(y\)</span> 中的任何一个点。所以 <span class="math inline">\(x\)</span> 中的点不可能获胜。</p>
+<p>定理一的推论：<br>
+对于每一条没有描述的边，我们可以视为一条 <strong>无向边</strong>。</p>
+<p>性质三：<br>
+如果一个点的出度为 <span class="math inline">\(0\)</span>，那么它一定可以获胜。</p>
+<p>证明：<br>
+我们可以将其它的边定向，使得所有的点都向它连了一条有向边。如果所有点都向这个点连了有向边，那么它显然是可以获胜的。</p>
+<p>显然，性质三和定理一的推论是不冲突的。</p>
+<hr>
+<p>综合上面的这些性质，我们可以将题目转化成这个亚子：</p>
+<p>有一张图，给定 <span class="math inline">\(m\)</span> 条有向边，且没有给定的边都是无向边。求图中所有出度为 <span class="math inline">\(0\)</span> 的点所在的强连通分量。</p>
+<p>做法如下：</p>
+<p>先将图缩点。令强连通分量 <span class="math inline">\(x\)</span> 的大小为 <span class="math inline">\(w_x\)</span>。如果两个强连通分量 <span class="math inline">\(x,y\)</span> 之间连了 <span class="math inline">\(w_x\cdot w_y\)</span> 条边，那么在新图上连一条 <span class="math inline">\(\bold{x\leftrightarrow y}\)</span> 的边，否则不连边。</p>
+<p>如果两个点之间没有连边，那么这两个点也可以被缩在一个强连通分量中。</p>
+<p>所以我们需要求的是，<strong>入度为 <span class="math inline">\(0\)</span> 的点在补图中的连通块</strong>。 具体地，我们可以在补图上，从入度为 <span class="math inline">\(0\)</span> 的点开始 BFS。</p>
+<p>我们用链表维护 <strong>还没有访问过的点</strong>。对于每一个点，我们枚举它的所有出边，然后选择还没访问过的点进行转移。每一次从一个点转移到一个还没访问过的点时，需要将这个点从链表里删除。</p>
+<p>考虑怎么证明这个东西。</p>
+<p>如果不考虑链表，单纯的 BFS 复杂度是 <span class="math inline">\(O(n+m)\)</span> 的。<br>
+然后考虑链表对复杂度的影响。<br>
+如果一个点的一条出边没有在原图中出现，那么它所对应的点将会被删除。否则会留在队列里。<br>
+在最坏情况下，每条边都对答案产生了正反两次的影响，它会对复杂度产生 <span class="math inline">\(O(1)\)</span> 的贡献（链表遍历的时候多经过一个点）。那么所有边对答案的贡献也只有 <span class="math inline">\(O(m)\)</span>。</p>
+<p>因为 BFS 的时候是从出度为 <span class="math inline">\(0\)</span> 的点开始，所以顺序显然是与原图相反的。注意到将所有边反向之后，图中的强连通分量不会改变。所以建图的时候可以直接反向所有边，在有向图上做补图 BFS。</p>
+<p>实现细节详见代码。</p>
+<h1 id="代码">代码</h1>
+<div class="spoiler collapsed"><div class="spoiler-title">代码</div><div class="spoiler-content"><figure class="highlight cpp">
+<figcaption>
+<span>LP2244.cpp</span>
+</figcaption>
+<table>
+<tr>
+<td class="gutter">
+<pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre>
+</td>
+<td class="code">
+<pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span> + <span class="number">61</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> dfn[N], low[N], ins[N], col[N], w[N], idx, scnt;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="built_in">list</span>[N], out, g[N];</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; st;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    x[dfn] = x[low] = ++idx, x[ins] = <span class="number">1</span>, st.push(x);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> nx : g[x])</span><br><span class="line">        <span class="keyword">if</span> (!nx[dfn])</span><br><span class="line">            dfs(nx), x[low] = <span class="built_in">std</span>::min(x[low], nx[low]);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (nx[ins])</span><br><span class="line">            x[low] = <span class="built_in">std</span>::min(x[low], nx[dfn]);</span><br><span class="line">    <span class="keyword">if</span> (x[dfn] == x[low])</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> y = scnt++ &amp; <span class="number">0</span>; y != x &amp;&amp; !st.empty();)</span><br><span class="line">            y = st.top(), st.pop(), y[ins] = <span class="number">0</span>, y[col] = scnt, scnt[w]++,</span><br><span class="line">            scnt[<span class="built_in">list</span>].push_back(y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m, u[N], v[N], id[N], d[N];</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123; <span class="keyword">return</span> u[x] &lt; u[y] || (u[x] == u[y] &amp;&amp; v[x] &lt; v[y]); &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> x, y, l, pre[N], suf[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">del</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    x[pre][suf] = x[suf];</span><br><span class="line">    x[suf][pre] = x[pre];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line"><span class="keyword">bool</span> vis[N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;x); x--;)</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;y), g[i].push_back(y), u[++m] = i, v[m] = y;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="keyword">if</span> (!i[dfn]) dfs(i);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++) u[i] = u[i][col], v[i] = v[i][col], id[i] = i;</span><br><span class="line">    <span class="built_in">std</span>::sort(id + <span class="number">1</span>, id + m + <span class="number">1</span>, cmp);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) g[i].clear();</span><br><span class="line">    n = scnt;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n; i++) i[pre] = i - <span class="number">1</span>, i[suf] = i + <span class="number">1</span>;</span><br><span class="line">    n[suf] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = l = <span class="number">1</span>; i &lt;= m; i++)</span><br><span class="line">        <span class="keyword">if</span> (id[i][u] != id[l][u] || id[i][v] != id[l][v]) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i - l == <span class="number">1l</span>l * id[l][u][w] * id[l][v][w])</span><br><span class="line">                g[id[l][u]].push_back(id[l][v]), id[l][v][d]++;</span><br><span class="line">            l = i;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">if</span> (m + <span class="number">1</span> - l == <span class="number">1l</span>l * id[l][u][w] * id[l][v][w])</span><br><span class="line">        g[id[l][u]].push_back(id[l][v]), id[l][v][d]++;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="keyword">if</span> (!i[d]) del(i), q.push(i);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> x; !q.empty(); q.pop()) &#123;</span><br><span class="line">        x = q.front();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i : x[<span class="built_in">list</span>]) out.push_back(i);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> nx : g[x]) nx[vis] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> p = <span class="number">0</span> [suf]; p; p = p[suf])</span><br><span class="line">            <span class="keyword">if</span> (!p[vis]) del(p), q.push(p);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> nx : g[x]) nx[vis] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">std</span>::sort(out.begin(), out.end());</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>, out.size());</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i : out) <span class="built_in">printf</span>(<span class="string">" %d"</span>, i);</span><br><span class="line">&#125;</span><br></pre>
+</td>
+</tr>
+</table>
+</figure>
+</div></div>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+    </div>
+
+    
+    
+    
+        
+      
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>tiger0132</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://noi.solutions/2019/11/12/luogu-p2244-sol/" title="「洛谷 P2244」选举预测 - 补图 + BFS + SCC">https://noi.solutions/2019/11/12/luogu-p2244-sol/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li>
+</ul>
+</div>
+
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/图论/" rel="tag"># 图论</a>
+            
+              <a href="/tags/补图/" rel="tag"># 补图</a>
+            
+              <a href="/tags/BFS/" rel="tag"># BFS</a>
+            
+              <a href="/tags/洛谷/" rel="tag"># 洛谷</a>
+            
+              <a href="/tags/Tarjan/" rel="tag"># Tarjan</a>
+            
+              <a href="/tags/强连通分量/" rel="tag"># 强连通分量</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/11/12/complement-graph-problems/" rel="next" title="「图论」补图相关">
+                  <i class="fa fa-chevron-left"></i> 「图论」补图相关
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    <div class="comments" id="comments"></div>
+  
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">tiger0132</p>
+  <div class="site-description motion-element" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">40</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3RpZ2VyMDEzMg==" title="GitHub &rarr; https://github.com/tiger0132"><i class="fa fa-fw fa-github"></i>GitHub</span>
+      </span>
+    
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    
+  
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element links-of-blogroll-block">
+    <div class="links-of-blogroll-title">
+      <i class="fa  fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9hYy50aWdlcjAxMzIudGsv" title="https://ac.tiger0132.tk/">以前的 Blog</span>
+        </li>
+      
+    </ul>
+  </div>
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题意"><span class="nav-number">1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解法"><span class="nav-number">2.</span> <span class="nav-text">解法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tiger0132</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+
+    
+
+  </div>
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/pjax/pjax.min.js?v=0.2.8"></script>
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+  <script src="/lib/reading_progress/reading_progress.js"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/js/utils.js?v=7.3.0"></script>
+  <script src="/js/motion.js?v=7.3.0"></script>
+
+
+  <script src="/js/affix.js?v=7.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+
+<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+
+
+  
+  <script pjax>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.3.0"></script>
+
+
+
+
+
+
+
+
+<script pjax>
+if ($('body').find('div.pdf').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js', function() {
+    $('body').find('div.pdf').each(function(i, o) {
+      PDFObject.embed($(o).attr('target'), $(o), {
+        pdfOpenParams: {
+          navpanes: 0,
+          toolbar: 0,
+          statusbar: 0,
+          pagemode: 'thumbs',
+          view: 'FitH'
+        },
+        PDFJS_URL: '/lib/pdf/web/viewer.html',
+        height: $(o).attr('height') || '500px'
+      });
+    });
+  }, window.PDFObject);
+}
+</script>
+
+
+<script pjax>
+if ($('body').find('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', function() {
+    mermaid.initialize({
+      theme: 'forest',
+      logLevel: 3,
+      flowchart: { curve: 'linear' },
+      gantt: { axisFormat: '%m/%d/%Y' },
+      sequence: { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+
+<script pjax>
+  console.log(111);
+  (function (document) {
+    [].forEach.call(document.getElementsByClassName('spoiler'), function(panel) {
+      panel.getElementsByClassName('spoiler-title')[0].onclick = function() {
+        panel.classList.toggle("collapsed");
+        panel.classList.toggle("expanded");
+      }
+    });
+  })(document);
+</script>
+
+
+    <div id="pjax">
+
+  
+
+  
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      extensions: [
+        'cancel.js',
+        'enclose.js'
+      ],
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    },
+    SVG: {
+      scale: 100
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', function() {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+  
+
+  
+
+  
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+
+    
+
+<script>
+NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', function() {
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'eWr2Bo8k6b5F78lHQVGCGtX3-MdYXbMMI',
+    appKey: 'XjjYJoAdlRTJe6XVo6tlnQPg',
+    placeholder: '>_<',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: 'zh-cn' || 'zh-cn',
+    path: location.pathname
+  });
+}, window.Valine);
+</script>
+
+    </div>
+    <script>
+var pjax = new Pjax({
+  selectors: [
+    'title',
+    '#page-configurations',
+    '.content-wrap',
+    '.sidebar-inner',
+    '#pjax'
+  ],
+  switches: {
+    '.sidebar-inner': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo: !CONFIG.save_scroll
+});
+$(document).on('pjax:send', function() {
+  $('.sidebar-inner').stop().fadeTo('fast', 0);
+  CONFIG.save_scroll && clearInterval(NexT.utils.saveScrollTimer);
+});
+$(document).on('pjax:success', function() {
+  $('script[pjax], script#page-configurations, #pjax script').each(function(i, o) {
+    $(o).parent().append($(o).remove());
+  });
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  $('.sidebar-inner .motion-element').css('opacity', 1);
+  $('.sidebar-inner').fadeTo('fast', 1);
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+</body>
+</html>
