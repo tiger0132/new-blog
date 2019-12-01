@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="Tiger0132 的小站">
 <meta property="og:description" content="里面的套路大概都比较基础。持续更新……">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-22T03:56:53.138Z">
+<meta property="og:updated_time" content="2019-12-01T04:56:39.901Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一些常见套路">
 <meta name="twitter:description" content="里面的套路大概都比较基础。持续更新……">
@@ -345,7 +345,7 @@ Analytics"></a></div></noscript>
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-22 11:56:53" itemprop="dateModified" datetime="2019-10-22T11:56:53+08:00">2019-10-22</time>
+                <time title="修改时间：2019-12-01 12:56:39" itemprop="dateModified" datetime="2019-12-01T12:56:39+08:00">2019-12-01</time>
               </span>
             
           
@@ -430,6 +430,9 @@ Analytics"></a></div></noscript>
 <p>一个数一直和别的数取做 GCD，最多变 <span class="math inline">\(\log a\)</span> 次就会变成 <span class="math inline">\(1\)</span>。</p>
 <p>一个数一直对别的数取模，最多变 <span class="math inline">\(\log a\)</span> 次就会变成 <span class="math inline">\(1\)</span> 或 <span class="math inline">\(0\)</span>。</p>
 <p>一个数一直开方下取整，最多变 <span class="math inline">\(\log\log a\)</span> 次就会变成 <span class="math inline">\(1\)</span>。</p>
+<h2 id="数数">数数？</h2>
+<p>在 DAG 上，从起点到达终点，不经过所有黑点的方案数，等于 <strong>从起点到达终点的所有方案数</strong> 减去 <strong>对于每个黑点</strong>，<strong>从起点到达这个黑点的方案数 * 这个黑点到达终点的所有方案数</strong>。</p>
+<p>后面的这个式子等价于 <strong>从起点经过若干个黑点到达终点的方案数</strong>。可以证明其不重不漏。</p>
 <h1 id="todo">Todo</h1>
 <ul>
 <li>CFG102001C</li>
@@ -714,7 +717,7 @@ Analytics"></a></div></noscript>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#位运算"><span class="nav-number">1.</span> <span class="nav-text">位运算</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#图论"><span class="nav-number">2.</span> <span class="nav-text">图论</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dp"><span class="nav-number">3.</span> <span class="nav-text">DP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#树"><span class="nav-number">4.</span> <span class="nav-text">树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据结构"><span class="nav-number">5.</span> <span class="nav-text">数据结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其它"><span class="nav-number">6.</span> <span class="nav-text">其它</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数学"><span class="nav-number">7.</span> <span class="nav-text">数学</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#todo"><span class="nav-number">8.</span> <span class="nav-text">Todo</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#位运算"><span class="nav-number">1.</span> <span class="nav-text">位运算</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#图论"><span class="nav-number">2.</span> <span class="nav-text">图论</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dp"><span class="nav-number">3.</span> <span class="nav-text">DP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#树"><span class="nav-number">4.</span> <span class="nav-text">树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据结构"><span class="nav-number">5.</span> <span class="nav-text">数据结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其它"><span class="nav-number">6.</span> <span class="nav-text">其它</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数学"><span class="nav-number">7.</span> <span class="nav-text">数学</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数数"><span class="nav-number">7.1.</span> <span class="nav-text">数数？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#todo"><span class="nav-number">8.</span> <span class="nav-text">Todo</span></a></li></ol></div>
             
 
           </div>
