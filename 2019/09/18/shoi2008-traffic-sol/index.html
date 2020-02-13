@@ -202,7 +202,7 @@ Analytics"></a></div></noscript>
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">47</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">50</span></a>
 
   </li>
       
@@ -215,7 +215,7 @@ Analytics"></a></div></noscript>
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">5</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">6</span></a>
 
   </li>
       
@@ -228,7 +228,7 @@ Analytics"></a></div></noscript>
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">33</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">35</span></a>
 
   </li>
       
@@ -398,13 +398,13 @@ Analytics"></a></div></noscript>
 <p>注意到这个标记是有可加性的，考虑用线段树维护。</p>
 <h2 id="pushup">pushup</h2>
 <p>首先考虑 <code>qwe</code> 的合并。</p>
-<p>注意到从合并后矩形的左上到右上只有两条路，分别如下：<img data-src="qwe.svg"></p>
+<p>注意到从合并后矩形的左上到右上只有两条路，分别如下：<img data-src="shoi2008-traffic/qwe.svg"></p>
 <p>其中蓝色矩形代表左区间，绿色矩形代表右区间。</p>
 <p>如图，可以得到 pushup：<span class="math inline">\(\texttt{qwe}=(L.\texttt{qwe}\land\texttt{er}_{L.r}\land R.\texttt{qwe})\lor(L.\texttt{qsc}\lor\texttt{cv}_{L.R}\lor R.\texttt{zse})\)</span>。其中 <span class="math inline">\(L.r\)</span> 是左区间的右端点。</p>
 <p><code>zxc</code> <code>qsc</code> <code>zse</code> 的 pushup 同理。具体参考代码。</p>
 <hr>
 <p>然后考虑 <code>qaz</code> 的合并。</p>
-<p>注意到从合并后矩形的左上到左下也只有两条路，分别如下：<img data-src="qaz.svg"></p>
+<p>注意到从合并后矩形的左上到左下也只有两条路，分别如下：<img data-src="shoi2008-traffic/qaz.svg"></p>
 <p>所以也可以得到 pushup：<span class="math inline">\(\texttt{qaz}=L.\texttt{qaz}\lor(L.\texttt{qwe}\land\texttt{er}_{L.r}\land R.\texttt{qaz}\land\texttt{cv}\land L.\texttt{zxc})\)</span>。其中 <span class="math inline">\(L.r\)</span> 是左区间的右端点。</p>
 <p><code>zse</code> 的 pushup 同理。</p>
 <h2 id="查询">查询</h2>
@@ -547,7 +547,7 @@ Analytics"></a></div></noscript>
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">35</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -572,7 +572,9 @@ Analytics"></a></div></noscript>
         
           
         
-        <span class="site-state-item-count">5</span>
+          
+        
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -681,7 +683,13 @@ Analytics"></a></div></noscript>
         
           
         
-        <span class="site-state-item-count">47</span>
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">50</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -750,7 +758,7 @@ Analytics"></a></div></noscript>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-heart"></i>
   </span>

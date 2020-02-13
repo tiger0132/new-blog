@@ -202,7 +202,7 @@ Analytics"></a></div></noscript>
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">47</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">50</span></a>
 
   </li>
       
@@ -215,7 +215,7 @@ Analytics"></a></div></noscript>
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">5</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">6</span></a>
 
   </li>
       
@@ -228,7 +228,7 @@ Analytics"></a></div></noscript>
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">33</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">35</span></a>
 
   </li>
       
@@ -456,7 +456,7 @@ Analytics"></a></div></noscript>
 <p>这题评分也有 <span class="math inline">\(2500\)</span>？CF 怎么自己都恶评啊……</p>
 <p>感觉 901D（评分 <span class="math inline">\(2700\)</span>）和这题难度差不止 <span class="math inline">\(200\)</span> 分啊……</p>
 <blockquote>
-<p><strong>Behind story of D: Honestly I predicted D as hell hard problem. But other high rated people said it’s not that hard.</strong></p>
+<p><strong>Behind story of D: Honestly I predicted D as hell hard problem. But other high rated people said it's not that hard.</strong></p>
 </blockquote>
 <p>出题人你是在搞笑么？</p>
 <h2 id="e---product-oriented-recurrence">E - Product Oriented Recurrence</h2>
@@ -488,7 +488,7 @@ d_n&amp;=d_{n-1}+d_{n-2}+d_{n-3}
 <p>其实还可以用离散对数乱搞，但是大同小异。</p>
 <h3 id="吐槽-1">吐槽</h3>
 <blockquote>
-<p><strong>Behind story of E: I didn’t expected such well-known problem. My solution for E is more complicated.</strong></p>
+<p><strong>Behind story of E: I didn't expected such well-known problem. My solution for E is more complicated.</strong></p>
 </blockquote>
 <p>海星……</p>
 <h2 id="f---maximum-sine">F - Maximum Sine</h2>
@@ -529,22 +529,22 @@ d_n&amp;=d_{n-1}+d_{n-2}+d_{n-3}
 <table>
 <thead>
 <tr class="header">
-<th style="text-align: center;"><span class="math inline">\(1\)</span></th>
-<th style="text-align: center;"><span class="math inline">\(2\)</span></th>
-<th style="text-align: center;"><span class="math inline">\(3\)</span></th>
-<th style="text-align: center;"><span class="math inline">\(4\)</span></th>
-<th style="text-align: center;"><span class="math inline">\(5\)</span></th>
-<th style="text-align: center;"><span class="math inline">\(6\)</span></th>
+<th align="center"><span class="math inline">\(1\)</span></th>
+<th align="center"><span class="math inline">\(2\)</span></th>
+<th align="center"><span class="math inline">\(3\)</span></th>
+<th align="center"><span class="math inline">\(4\)</span></th>
+<th align="center"><span class="math inline">\(5\)</span></th>
+<th align="center"><span class="math inline">\(6\)</span></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(4\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(5\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(4\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(4\)</span></td>
+<td align="center"><span class="math inline">\(5\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(4\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -589,57 +589,57 @@ d_n&amp;=d_{n-1}+d_{n-2}+d_{n-3}
 <p>首先，可以证明，存在一种删除序列，使得每次删除的子串互不相交，且得到最优答案。那么操作序列的顺序就与最终答案无关了。</p>
 <p>考虑 DP。令 <span class="math inline">\(dp_{i,S}\)</span> 为，确定最终字符串的前 <span class="math inline">\(i\)</span> 个字符时，进行 <span class="math inline">\(S\)</span> 的删除操作（<span class="math inline">\(S\)</span> 的第 <span class="math inline">\(i\)</span> 位代表是否进行删除长度为 <span class="math inline">\(2^{i-1}\)</span> 的子串的操作）是否可以得到最优解。</p>
 <p>举个例子：样例 1 中字符串为 <span class="math inline">\(\texttt{adcbca}\)</span>，它的 DP 数组和操作方式是这样的（下划线代表删除，绿色代表最终字符串的前 <span class="math inline">\(i\)</span> 位，其它颜色用于区分每次删除，为空代表不可能得到最优解）：</p>
-<table style="width:100%;">
+<table style="width:33%;">
 <colgroup>
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
+<col width="5%">
+<col width="5%">
+<col width="5%">
+<col width="5%">
+<col width="5%">
+<col width="5%">
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: center;">DP</th>
-<th style="text-align: center;"><span class="math inline">\(S=0\)</span></th>
-<th style="text-align: center;"><span class="math inline">\(1\)</span></th>
-<th style="text-align: center;"><span class="math inline">\(2\)</span></th>
-<th style="text-align: center;"><span class="math inline">\(3\)</span></th>
-<th style="text-align: center;">当前最优解</th>
+<th align="center">DP</th>
+<th align="center"><span class="math inline">\(S=0\)</span></th>
+<th align="center"><span class="math inline">\(1\)</span></th>
+<th align="center"><span class="math inline">\(2\)</span></th>
+<th align="center"><span class="math inline">\(3\)</span></th>
+<th align="center">当前最优解</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;"><span class="math inline">\(i=0\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\texttt{adcbca}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\color{red}{\underline{\texttt{a}}}\color{black}{\texttt{dcbca}}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\color{red}{\underline{\texttt{a}\texttt{d}}}\color{black}{\texttt{cbca}}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\color{red}{\underline{\texttt{ad}}}\color{blue}{\underline{\texttt{c}}}\color{black}{\texttt{bca}}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\varnothing\)</span></td>
+<td align="center"><span class="math inline">\(i=0\)</span></td>
+<td align="center"><span class="math inline">\(\texttt{adcbca}\)</span></td>
+<td align="center"><span class="math inline">\(\color{red}{\underline{\texttt{a}}}\color{black}{\texttt{dcbca}}\)</span></td>
+<td align="center"><span class="math inline">\(\color{red}{\underline{\texttt{a}\texttt{d}}}\color{black}{\texttt{cbca}}\)</span></td>
+<td align="center"><span class="math inline">\(\color{red}{\underline{\texttt{ad}}}\color{blue}{\underline{\texttt{c}}}\color{black}{\texttt{bca}}\)</span></td>
+<td align="center"><span class="math inline">\(\varnothing\)</span></td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\texttt{adcbca}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\texttt{a}\color{red}{\underline{\texttt{d}}}\color{black}{\texttt{cbca}}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\texttt{a}\color{red}{\underline{\texttt{dc}}}\color{black}{\texttt{bca}}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\texttt{a}\color{red}{\underline{\texttt{dc}}}\color{blue}{\underline{\texttt{b}}}\color{black}{\texttt{ca}}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\color{lightgreen}{\texttt{a}}\color{black}{\texttt{dcbca}}\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(\texttt{adcbca}\)</span></td>
+<td align="center"><span class="math inline">\(\texttt{a}\color{red}{\underline{\texttt{d}}}\color{black}{\texttt{cbca}}\)</span></td>
+<td align="center"><span class="math inline">\(\texttt{a}\color{red}{\underline{\texttt{dc}}}\color{black}{\texttt{bca}}\)</span></td>
+<td align="center"><span class="math inline">\(\texttt{a}\color{red}{\underline{\texttt{dc}}}\color{blue}{\underline{\texttt{b}}}\color{black}{\texttt{ca}}\)</span></td>
+<td align="center"><span class="math inline">\(\color{lightgreen}{\texttt{a}}\color{black}{\texttt{dcbca}}\)</span></td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><span class="math inline">\(2\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\texttt{a}\color{red}{\texttt{d}}\)</span>, GG</td>
-<td style="text-align: center;"><span class="math inline">\(\texttt{a}\color{red}{\texttt{c}}\)</span>, GG</td>
-<td style="text-align: center;"><span class="math inline">\(\texttt{a}\color{red}{\underline{\texttt{dc}}}\color{black}{\texttt{bca}}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\texttt{a}\color{red}{\underline{\texttt{dc}}}\color{black}{\texttt{b}}\color{blue}{\underline{\texttt{c}}}\color{black}{\texttt{a}}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\color{lightgreen}{\texttt{a}}\color{black}{\texttt{dc}}\color{lightgreen}{\texttt{b}}\color{black}{\texttt{ca}}\)</span></td>
+<td align="center"><span class="math inline">\(2\)</span></td>
+<td align="center"><span class="math inline">\(\texttt{a}\color{red}{\texttt{d}}\)</span>, GG</td>
+<td align="center"><span class="math inline">\(\texttt{a}\color{red}{\texttt{c}}\)</span>, GG</td>
+<td align="center"><span class="math inline">\(\texttt{a}\color{red}{\underline{\texttt{dc}}}\color{black}{\texttt{bca}}\)</span></td>
+<td align="center"><span class="math inline">\(\texttt{a}\color{red}{\underline{\texttt{dc}}}\color{black}{\texttt{b}}\color{blue}{\underline{\texttt{c}}}\color{black}{\texttt{a}}\)</span></td>
+<td align="center"><span class="math inline">\(\color{lightgreen}{\texttt{a}}\color{black}{\texttt{dc}}\color{lightgreen}{\texttt{b}}\color{black}{\texttt{ca}}\)</span></td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><span class="math inline">\(3\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\texttt{a}\color{red}{\texttt{d}}\)</span>, GG</td>
-<td style="text-align: center;"><span class="math inline">\(\texttt{a}\color{red}{\texttt{c}}\)</span>, GG</td>
-<td style="text-align: center;"><span class="math inline">\(\texttt{ab}\color{red}{\texttt{c}}\)</span>, GG</td>
-<td style="text-align: center;"><span class="math inline">\(\texttt{a}\color{red}{\underline{\texttt{dc}}}\color{black}{\texttt{b}}\color{blue}{\underline{\texttt{c}}}\color{black}{\texttt{a}}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\color{lightgreen}{\texttt{a}}\color{black}{\texttt{dc}}\color{lightgreen}{\texttt{b}}\color{black}{\texttt{c}}\color{lightgreen}{\texttt{a}}\)</span></td>
+<td align="center"><span class="math inline">\(3\)</span></td>
+<td align="center"><span class="math inline">\(\texttt{a}\color{red}{\texttt{d}}\)</span>, GG</td>
+<td align="center"><span class="math inline">\(\texttt{a}\color{red}{\texttt{c}}\)</span>, GG</td>
+<td align="center"><span class="math inline">\(\texttt{ab}\color{red}{\texttt{c}}\)</span>, GG</td>
+<td align="center"><span class="math inline">\(\texttt{a}\color{red}{\underline{\texttt{dc}}}\color{black}{\texttt{b}}\color{blue}{\underline{\texttt{c}}}\color{black}{\texttt{a}}\)</span></td>
+<td align="center"><span class="math inline">\(\color{lightgreen}{\texttt{a}}\color{black}{\texttt{dc}}\color{lightgreen}{\texttt{b}}\color{black}{\texttt{c}}\color{lightgreen}{\texttt{a}}\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -720,7 +720,7 @@ d_n&amp;=d_{n-1}+d_{n-2}+d_{n-3}
 <p><span class="math inline">\(1\le n\le10^5\)</span>。</p>
 <h3 id="解法-13">解法</h3>
 <p>分为两种方法构造：<code>abcabcabcabcabc</code>（I 型）和 <code>aaaaaabcbcbcbcbcbc</code>（II 型）。然后分类讨论：</p>
-<ol type="1">
+<ol style="list-style-type: decimal">
 <li><span class="math inline">\(n=1\)</span>： 暴力 next_permutation，不需要考虑循环。</li>
 <li><span class="math inline">\(s=\texttt{ac},t=\texttt{bc}\)</span> 以及同构情况： 构造成 <code>ccccccabababababab</code> 的形式。</li>
 <li><span class="math inline">\(s=\texttt{ab},t=\texttt{ac}\)</span> 以及同构情况： 构造成 <code>bcbcbcbcbcbcaaaaaa</code> 的形式。</li>
@@ -973,7 +973,7 @@ d_n&amp;=d_{n-1}+d_{n-2}+d_{n-3}
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">35</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -998,7 +998,9 @@ d_n&amp;=d_{n-1}+d_{n-2}+d_{n-3}
         
           
         
-        <span class="site-state-item-count">5</span>
+          
+        
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -1107,7 +1109,13 @@ d_n&amp;=d_{n-1}+d_{n-2}+d_{n-3}
         
           
         
-        <span class="site-state-item-count">47</span>
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">50</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -1176,7 +1184,7 @@ d_n&amp;=d_{n-1}+d_{n-2}+d_{n-3}
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-heart"></i>
   </span>
