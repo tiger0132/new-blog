@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    exturl: true,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    save_scroll: false,
+    copycode: {"enable":true,"show_result":true,"style":"default"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="无聊卡了卡 NTT 的常数，这里记录本蒟蒻的卡常过程。">
+<meta name="keywords" content="毒瘤,NTT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NTT 卡常记">
+<meta property="og:url" content="https://noi.solutions/2020/03/11/ntt-optimizations/index.html">
+<meta property="og:site_name" content="Tiger0132 的小站">
+<meta property="og:description" content="无聊卡了卡 NTT 的常数，这里记录本蒟蒻的卡常过程。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-03-10T17:46:38.984Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NTT 卡常记">
+<meta name="twitter:description" content="无聊卡了卡 NTT 的常数，这里记录本蒟蒻的卡常过程。">
+  <link rel="canonical" href="https://noi.solutions/2020/03/11/ntt-optimizations/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>NTT 卡常记 | Tiger0132 的小站</title>
+  
+
+
+
+
+
+
+
+<!-- Default Statcounter code for New Blog https://noi.solutions/ -->
+<script type="text/javascript">
+var sc_project=12058730; 
+var sc_invisible=1; 
+var sc_security="7a77360b"; 
+var sc_https=1; 
+</script>
+<script type="text/javascript"
+src="https://www.statcounter.com/counter/counter.js" async></script>
+<noscript><div class="statcounter"><a title="Web Analytics"
+href="https://statcounter.com/" target="_blank"><img class="statcounter"
+src="https://c.statcounter.com/12058730/0/7a77360b/1/" alt="Web
+Analytics"></a></div></noscript>
+<!-- End of Statcounter Code -->
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Tiger0132 的小站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">自闭了</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">58</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">6</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">41</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-friends">
+      
+    
+      
+    
+
+    <a href="/friends/" rel="section"><i class="menu-item-icon fa fa-fw fa-link"></i> <br>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
+  </ul>
+
+</nav>
+  <div class="site-search">
+    
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+  </div>
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content page-post-detail">
+            
+
+  <div id="posts" class="posts-expand">
+    
+    <div class="reading-progress-bar"></div>
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://noi.solutions/2020/03/11/ntt-optimizations/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tiger0132">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tiger0132 的小站">
+    </span>
+      <header class="post-header">
+
+        
+          <h2 class="post-title" itemprop="name headline">NTT 卡常记
+
+            
+          </h2>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-03-11 00:47:41 / 修改时间：01:46:38" itemprop="dateCreated datePublished" datetime="2020-03-11T00:47:41+08:00">2020-03-11</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+            <span class="post-meta-item" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+            
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/03/11/ntt-optimizations/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/11/ntt-optimizations/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>无聊卡了卡 NTT 的常数，这里记录本蒟蒻的卡常过程。</p>
+<a id="more"></a>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9vai5ha2lvaS5tbDo4MjAwL3N1Ym1pc3Npb24vNTYy" title="https://oj.akioi.ml:8200/submission/562">#562<i class="fa fa-external-link"></i></span>：加了本文中前 <span class="math inline">\(5\)</span> 个优化的代码。</li>
+</ul>
+<h1 id="优化效果比较">优化效果比较</h1>
+<ol style="list-style-type: decimal">
+<li>单独开一个循环处理 <span class="math inline">\(i=1\)</span> 的情况。 优化效果：在 #562 中删除这个优化后，<span class="math inline">\(872\operatorname{ms}\to959\operatorname{ms}\)</span>。<strong>有优化效果。</strong> 提交记录：<span class="exturl" data-url="aHR0cHM6Ly9vai5ha2lvaS5tbDo4MjAwL3N1Ym1pc3Npb24vNTc1" title="https://oj.akioi.ml:8200/submission/575">#575（优化前）<i class="fa fa-external-link"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9vai5ha2lvaS5tbDo4MjAwL3N1Ym1pc3Npb24vNTYy" title="https://oj.akioi.ml:8200/submission/562">#562（优化后）<i class="fa fa-external-link"></i></span>。</li>
+<li>在 DFT 内层循环中使用指针（具体见代码）。 优化效果：无明显效果。 提交记录：<span class="exturl" data-url="aHR0cHM6Ly9vai5ha2lvaS5tbDo4MjAwL3N1Ym1pc3Npb24vNTc3" title="https://oj.akioi.ml:8200/submission/577">#577（优化前）<i class="fa fa-external-link"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9vai5ha2lvaS5tbDo4MjAwL3N1Ym1pc3Npb24vNTYy" title="https://oj.akioi.ml:8200/submission/562">#562（优化后）<i class="fa fa-external-link"></i></span>。</li>
+<li>使用一个 <code>unsigned long long</code> 数组存储中间结果，减少取模次数。 优化效果：在 #562 中删除这个优化后，<span class="math inline">\(872\operatorname{ms}\to1014\operatorname{ms}\)</span>。<strong>优化效果明显。</strong> 提交记录：<span class="exturl" data-url="aHR0cHM6Ly9vai5ha2lvaS5tbDo4MjAwL3N1Ym1pc3Npb24vNTc4" title="https://oj.akioi.ml:8200/submission/578">#578（优化前）<i class="fa fa-external-link"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9vai5ha2lvaS5tbDo4MjAwL3N1Ym1pc3Npb24vNTYy" title="https://oj.akioi.ml:8200/submission/562">#562（优化后）<i class="fa fa-external-link"></i></span>。 注：我的多项式模板是 <code>#define int unsigned</code> 的，所以无法使用 <code>x += x &gt;&gt; 31 &amp; P;</code> 这种取模优化。#578 中使用的是 <code>x &gt;= P &amp;&amp; (x -= P);</code>。</li>
+<li><strong>预处理原根。</strong> 优化效果：在 #562 中删除这个优化后，<span class="math inline">\(872\operatorname{ms}\to1133\operatorname{ms}\)</span>。<strong>优化效果显著。</strong> 提交记录：<span class="exturl" data-url="aHR0cHM6Ly9vai5ha2lvaS5tbDo4MjAwL3N1Ym1pc3Npb24vNTYw" title="https://oj.akioi.ml:8200/submission/560">#560（优化前）<i class="fa fa-external-link"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9vai5ha2lvaS5tbDo4MjAwL3N1Ym1pc3Npb24vNTYy" title="https://oj.akioi.ml:8200/submission/562">#562（优化后）<i class="fa fa-external-link"></i></span>。 注：在代码中，<span class="math inline">\(w_{i+j}=g^\frac{k(P-1)}{2i},j&lt;i,i=2^a\)</span>。</li>
+<li>减少位反转数组计算次数。 优化效果：在 #562 中删除这个优化后，<span class="math inline">\(872\operatorname{ms}\to909\operatorname{ms}\)</span>。优化效果不明显。 提交记录：<span class="exturl" data-url="aHR0cHM6Ly9vai5ha2lvaS5tbDo4MjAwL3N1Ym1pc3Npb24vNTYw" title="https://oj.akioi.ml:8200/submission/560">#560（优化前）<i class="fa fa-external-link"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9vai5ha2lvaS5tbDo4MjAwL3N1Ym1pc3Npb24vNTc5" title="https://oj.akioi.ml:8200/submission/579">#579（优化后）<i class="fa fa-external-link"></i></span>。</li>
+<li>不封装，不用 <code>vector</code>。 优化效果：没试过，咕咕咕。 提交记录：<span class="math inline">\(\tan90^\circ\)</span></li>
+</ol>
+<h1 id="具体实现">具体实现</h1>
+<h2 id="预处理原根">预处理原根</h2>
+<p>令 <span class="math inline">\(w_{i+k}=g^\frac{k(P-1)}{2i},k&lt;i,i=2^a\)</span>。</p>
+<p>记最大的 DFT 长度为 <span class="math inline">\(lim\)</span>。</p>
+<p>首先，对于任意的 <span class="math inline">\(i=2^a\)</span>，都有 <span class="math inline">\(w_i=g^\frac{0(P-1)}{2i}=1\)</span>。而且有 <span class="math inline">\(w_{2(i+k)}=g^\frac{2k(P-1)}{4i}=w_{i+k}\)</span>。</p>
+<p>所以我们可以这样预处理 <span class="math inline">\(w\)</span> 数组：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> wn = pw(G, (P - <span class="number">1</span>) &gt;&gt; l);</span><br><span class="line">w[lim &gt;&gt; <span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = (lim &gt;&gt; <span class="number">1</span>) + <span class="number">1</span>; i &lt; lim; ++i) w[i] = (L)w[i - <span class="number">1</span>] * wn % P;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = (lim &gt;&gt; <span class="number">1</span>) - <span class="number">1</span>; i; --i) w[i] = w[i &lt;&lt; <span class="number">1</span>];</span><br><span class="line">lim = l;</span><br></pre></td></tr></table></figure>
+<h2 id="模乘优化">模乘优化</h2>
+<p>首先我们知道，NTT 非常依赖模乘运算，即对于两个整数 <span class="math inline">\(T,W\)</span>，求出 <span class="math inline">\(TW\bmod p\)</span>。但是除法运算是非常慢的。</p>
+<p>有几种常见的方法将除法替换成若干次乘法。</p>
+<p>基本的策略是：</p>
+<ul>
+<li>估计一个「商」<span class="math inline">\(Q\)</span>；</li>
+<li>把 <span class="math inline">\(Q\)</span> 乘上 <span class="math inline">\(p\)</span>；</li>
+<li>从 <span class="math inline">\(TW\)</span> 里减去 <span class="math inline">\(Qp\)</span>，得到一个候选余数 <span class="math inline">\(R\)</span>；</li>
+<li>对 <span class="math inline">\(R\)</span> 加加减减，把它调整到区间 <span class="math inline">\([0,p)\)</span> 里。</li>
+</ul>
+<p>（下文中的 <span class="math inline">\(\beta\)</span> 均为字长）</p>
+<h3 id="shoup-算法">Shoup 算法</h3>
+<p><strong>输入</strong>：<span class="math inline">\(T,W\in[0,p)\)</span>，假设 <span class="math inline">\(p\le\beta/2\)</span>。预处理了常数 <span class="math inline">\(W&#39;=\lfloor W\beta/p\rfloor\)</span>。</p>
+<p><strong>输出</strong>：<span class="math inline">\(R=TW\bmod p\)</span>。</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(Q\gets\lfloor W&#39;T/\beta\rfloor\)</span>（<span class="math inline">\(W&#39;T\)</span> 的高位）</li>
+<li><span class="math inline">\(R\gets(WT-Qp)\bmod\beta\)</span>（候选余数的低位）</li>
+<li>如果 <span class="math inline">\(R\ge p\)</span>，那么 <span class="math inline">\(R\gets R-p\)</span></li>
+</ol>
+<p>注：<span class="math inline">\(W\)</span> 是不变的。这对 NTT 是合理的，因为每次变换使用的是相同的原根。</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+    </div>
+
+    
+    
+    
+        
+      
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>tiger0132</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://noi.solutions/2020/03/11/ntt-optimizations/" title="NTT 卡常记">https://noi.solutions/2020/03/11/ntt-optimizations/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li>
+</ul>
+</div>
+
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/毒瘤/" rel="tag"># 毒瘤</a>
+            
+              <a href="/tags/NTT/" rel="tag"># NTT</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2020/02/26/dp-optimazation-notes/" rel="next" title="DP 优化相关">
+                  <i class="fa fa-chevron-left"></i> DP 优化相关
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    <div class="comments" id="comments"></div>
+  
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">tiger0132</p>
+  <div class="site-description motion-element" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3RpZ2VyMDEzMg==" title="GitHub &rarr; https://github.com/tiger0132"><i class="fa fa-fw fa-github"></i>GitHub</span>
+      </span>
+    
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    
+  
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element links-of-blogroll-block">
+    <div class="links-of-blogroll-title">
+      <i class="fa  fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9hYy50aWdlcjAxMzIudGsv" title="https://ac.tiger0132.tk/">以前的 Blog</span>
+        </li>
+      
+    </ul>
+  </div>
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#优化效果比较"><span class="nav-number">1.</span> <span class="nav-text">优化效果比较</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#具体实现"><span class="nav-number">2.</span> <span class="nav-text">具体实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#预处理原根"><span class="nav-number">2.1.</span> <span class="nav-text">预处理原根</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模乘优化"><span class="nav-number">2.2.</span> <span class="nav-text">模乘优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#shoup-算法"><span class="nav-number">2.2.1.</span> <span class="nav-text">Shoup 算法</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tiger0132</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+
+    
+
+  </div>
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/pjax/pjax.min.js?v=0.2.8"></script>
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+  <script src="/lib/reading_progress/reading_progress.js"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/js/utils.js?v=7.3.0"></script>
+  <script src="/js/motion.js?v=7.3.0"></script>
+
+
+  <script src="/js/affix.js?v=7.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+
+<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+
+
+  
+  <script pjax>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.3.0"></script>
+
+
+
+
+
+
+
+
+<script pjax>
+if ($('body').find('div.pdf').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js', function() {
+    $('body').find('div.pdf').each(function(i, o) {
+      PDFObject.embed($(o).attr('target'), $(o), {
+        pdfOpenParams: {
+          navpanes: 0,
+          toolbar: 0,
+          statusbar: 0,
+          pagemode: 'thumbs',
+          view: 'FitH'
+        },
+        PDFJS_URL: '/lib/pdf/web/viewer.html',
+        height: $(o).attr('height') || '500px'
+      });
+    });
+  }, window.PDFObject);
+}
+</script>
+
+
+<script pjax>
+if ($('body').find('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', function() {
+    mermaid.initialize({
+      theme: 'forest',
+      logLevel: 3,
+      flowchart: { curve: 'linear' },
+      gantt: { axisFormat: '%m/%d/%Y' },
+      sequence: { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+
+<script pjax>
+  console.log(111);
+  (function (document) {
+    [].forEach.call(document.getElementsByClassName('spoiler'), function(panel) {
+      panel.getElementsByClassName('spoiler-title')[0].onclick = function() {
+        panel.classList.toggle("collapsed");
+        panel.classList.toggle("expanded");
+      }
+    });
+  })(document);
+</script>
+
+
+    <div id="pjax">
+
+  
+
+  
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      extensions: [
+        'cancel.js',
+        'enclose.js'
+      ],
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    },
+    SVG: {
+      scale: 100
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', function() {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+  
+
+  
+
+  
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+
+    
+
+<script>
+NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', function() {
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'eWr2Bo8k6b5F78lHQVGCGtX3-MdYXbMMI',
+    appKey: 'XjjYJoAdlRTJe6XVo6tlnQPg',
+    placeholder: '>_<',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: 'zh-cn' || 'zh-cn',
+    path: location.pathname
+  });
+}, window.Valine);
+</script>
+
+    </div>
+    <script>
+var pjax = new Pjax({
+  selectors: [
+    'title',
+    '#page-configurations',
+    '.content-wrap',
+    '.sidebar-inner',
+    '#pjax'
+  ],
+  switches: {
+    '.sidebar-inner': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo: !CONFIG.save_scroll
+});
+$(document).on('pjax:send', function() {
+  $('.sidebar-inner').stop().fadeTo('fast', 0);
+  CONFIG.save_scroll && clearInterval(NexT.utils.saveScrollTimer);
+});
+$(document).on('pjax:success', function() {
+  $('script[pjax], script#page-configurations, #pjax script').each(function(i, o) {
+    $(o).parent().append($(o).remove());
+  });
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  $('.sidebar-inner .motion-element').css('opacity', 1);
+  $('.sidebar-inner').fadeTo('fast', 1);
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+</body>
+</html>
