@@ -64,7 +64,7 @@
 <meta property="og:site_name" content="Tiger0132 的小站">
 <meta property="og:description" content="无聊卡了卡 NTT 的常数，这里记录本蒟蒻的卡常过程。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-10T17:46:38.984Z">
+<meta property="og:updated_time" content="2020-03-11T14:35:59.225Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NTT 卡常记">
 <meta name="twitter:description" content="无聊卡了卡 NTT 的常数，这里记录本蒟蒻的卡常过程。">
@@ -331,7 +331,7 @@ Analytics"></a></div></noscript>
                 
               
 
-              <time title="创建时间：2020-03-11 00:47:41 / 修改时间：01:46:38" itemprop="dateCreated datePublished" datetime="2020-03-11T00:47:41+08:00">2020-03-11</time>
+              <time title="创建时间：2020-03-11 00:47:41 / 修改时间：22:35:59" itemprop="dateCreated datePublished" datetime="2020-03-11T00:47:41+08:00">2020-03-11</time>
             </span>
           
             
@@ -379,16 +379,29 @@ Analytics"></a></div></noscript>
         <p>无聊卡了卡 NTT 的常数，这里记录本蒟蒻的卡常过程。</p>
 <a id="more"></a>
 <ul>
-<li><span class="exturl" data-url="aHR0cHM6Ly9vai5ha2lvaS5tbDo4MjAwL3N1Ym1pc3Npb24vNTYy" title="https://oj.akioi.ml:8200/submission/562">#562<i class="fa fa-external-link"></i></span>：加了本文中前 <span class="math inline">\(5\)</span> 个优化的代码。</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9vai5ha2lvaS5tbDo4MjAwL3N1Ym1pc3Npb24vNTYy" title="https://oj.akioi.ml:8200/submission/562">#562<i class="fa fa-external-link"></i></span>：加了本文中前 <span class="math inline">\(4\)</span> 个优化的代码。</li>
 </ul>
 <h1 id="优化效果比较">优化效果比较</h1>
 <ol style="list-style-type: decimal">
-<li>单独开一个循环处理 <span class="math inline">\(i=1\)</span> 的情况。 优化效果：在 #562 中删除这个优化后，<span class="math inline">\(872\operatorname{ms}\to959\operatorname{ms}\)</span>。<strong>有优化效果。</strong> 提交记录：<span class="exturl" data-url="aHR0cHM6Ly9vai5ha2lvaS5tbDo4MjAwL3N1Ym1pc3Npb24vNTc1" title="https://oj.akioi.ml:8200/submission/575">#575（优化前）<i class="fa fa-external-link"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9vai5ha2lvaS5tbDo4MjAwL3N1Ym1pc3Npb24vNTYy" title="https://oj.akioi.ml:8200/submission/562">#562（优化后）<i class="fa fa-external-link"></i></span>。</li>
-<li>在 DFT 内层循环中使用指针（具体见代码）。 优化效果：无明显效果。 提交记录：<span class="exturl" data-url="aHR0cHM6Ly9vai5ha2lvaS5tbDo4MjAwL3N1Ym1pc3Npb24vNTc3" title="https://oj.akioi.ml:8200/submission/577">#577（优化前）<i class="fa fa-external-link"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9vai5ha2lvaS5tbDo4MjAwL3N1Ym1pc3Npb24vNTYy" title="https://oj.akioi.ml:8200/submission/562">#562（优化后）<i class="fa fa-external-link"></i></span>。</li>
-<li>使用一个 <code>unsigned long long</code> 数组存储中间结果，减少取模次数。 优化效果：在 #562 中删除这个优化后，<span class="math inline">\(872\operatorname{ms}\to1014\operatorname{ms}\)</span>。<strong>优化效果明显。</strong> 提交记录：<span class="exturl" data-url="aHR0cHM6Ly9vai5ha2lvaS5tbDo4MjAwL3N1Ym1pc3Npb24vNTc4" title="https://oj.akioi.ml:8200/submission/578">#578（优化前）<i class="fa fa-external-link"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9vai5ha2lvaS5tbDo4MjAwL3N1Ym1pc3Npb24vNTYy" title="https://oj.akioi.ml:8200/submission/562">#562（优化后）<i class="fa fa-external-link"></i></span>。 注：我的多项式模板是 <code>#define int unsigned</code> 的，所以无法使用 <code>x += x &gt;&gt; 31 &amp; P;</code> 这种取模优化。#578 中使用的是 <code>x &gt;= P &amp;&amp; (x -= P);</code>。</li>
-<li><strong>预处理原根。</strong> 优化效果：在 #562 中删除这个优化后，<span class="math inline">\(872\operatorname{ms}\to1133\operatorname{ms}\)</span>。<strong>优化效果显著。</strong> 提交记录：<span class="exturl" data-url="aHR0cHM6Ly9vai5ha2lvaS5tbDo4MjAwL3N1Ym1pc3Npb24vNTYw" title="https://oj.akioi.ml:8200/submission/560">#560（优化前）<i class="fa fa-external-link"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9vai5ha2lvaS5tbDo4MjAwL3N1Ym1pc3Npb24vNTYy" title="https://oj.akioi.ml:8200/submission/562">#562（优化后）<i class="fa fa-external-link"></i></span>。 注：在代码中，<span class="math inline">\(w_{i+j}=g^\frac{k(P-1)}{2i},j&lt;i,i=2^a\)</span>。</li>
-<li>减少位反转数组计算次数。 优化效果：在 #562 中删除这个优化后，<span class="math inline">\(872\operatorname{ms}\to909\operatorname{ms}\)</span>。优化效果不明显。 提交记录：<span class="exturl" data-url="aHR0cHM6Ly9vai5ha2lvaS5tbDo4MjAwL3N1Ym1pc3Npb24vNTYw" title="https://oj.akioi.ml:8200/submission/560">#560（优化前）<i class="fa fa-external-link"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9vai5ha2lvaS5tbDo4MjAwL3N1Ym1pc3Npb24vNTc5" title="https://oj.akioi.ml:8200/submission/579">#579（优化后）<i class="fa fa-external-link"></i></span>。</li>
-<li>不封装，不用 <code>vector</code>。 优化效果：没试过，咕咕咕。 提交记录：<span class="math inline">\(\tan90^\circ\)</span></li>
+<li><p>单独开一个循环处理 <span class="math inline">\(i=1\)</span> 的情况。</p>
+<p>优化效果：在 #562 中删除这个优化后，<span class="math inline">\(851\operatorname{ms}\to904\operatorname{ms}\)</span>。有优化效果。</p>
+<p>提交记录：<span class="exturl" data-url="aHR0cHM6Ly9vai5ha2lvaS5tbDo4MjAwL3N1Ym1pc3Npb24vNTc1" title="https://oj.akioi.ml:8200/submission/575">#575（优化前）<i class="fa fa-external-link"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9vai5ha2lvaS5tbDo4MjAwL3N1Ym1pc3Npb24vNTYy" title="https://oj.akioi.ml:8200/submission/562">#562（优化后）<i class="fa fa-external-link"></i></span>。</p></li>
+<li><p>使用一个 <code>unsigned long long</code> 数组存储中间结果，减少取模次数。</p>
+<p>优化效果：在 #562 中删除这个优化后，<span class="math inline">\(851\operatorname{ms}\to980\operatorname{ms}\)</span>。<strong>优化效果明显。</strong></p>
+<p>提交记录：<span class="exturl" data-url="aHR0cHM6Ly9vai5ha2lvaS5tbDo4MjAwL3N1Ym1pc3Npb24vNTc4" title="https://oj.akioi.ml:8200/submission/578">#578（优化前）<i class="fa fa-external-link"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9vai5ha2lvaS5tbDo4MjAwL3N1Ym1pc3Npb24vNTYy" title="https://oj.akioi.ml:8200/submission/562">#562（优化后）<i class="fa fa-external-link"></i></span>。</p>
+<p>注：我的多项式模板是 <code>#define int unsigned</code> 的，所以无法使用 <code>x += x &gt;&gt; 31 &amp; P;</code> 这种取模优化。#578 中使用的是 <code>x &gt;= P &amp;&amp; (x -= P);</code>。</p></li>
+<li><p><strong>预处理原根。</strong></p>
+<p>优化效果：在 #562 中删除这个优化后，<span class="math inline">\(851\operatorname{ms}\to1102\operatorname{ms}\)</span>。<strong>优化效果显著。</strong></p>
+<p>提交记录：<span class="exturl" data-url="aHR0cHM6Ly9vai5ha2lvaS5tbDo4MjAwL3N1Ym1pc3Npb24vNTYw" title="https://oj.akioi.ml:8200/submission/560">#560（优化前）<i class="fa fa-external-link"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9vai5ha2lvaS5tbDo4MjAwL3N1Ym1pc3Npb24vNTYy" title="https://oj.akioi.ml:8200/submission/562">#562（优化后）<i class="fa fa-external-link"></i></span>。</p>
+<p>注：在代码中，<span class="math inline">\(w_{i+j}=g^\frac{k(P-1)}{2i},j&lt;i,i=2^a\)</span>。</p></li>
+<li><p>减少位反转数组计算次数。</p>
+<p>优化效果：在 #562 中删除这个优化后，<span class="math inline">\(851\operatorname{ms}\to856\operatorname{ms}\)</span>。优化效果不明显。</p>
+提交记录：<span class="exturl" data-url="aHR0cHM6Ly9vai5ha2lvaS5tbDo4MjAwL3N1Ym1pc3Npb24vNTc5" title="https://oj.akioi.ml:8200/submission/579">#579（优化前）<i class="fa fa-external-link"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9vai5ha2lvaS5tbDo4MjAwL3N1Ym1pc3Npb24vNTYy" title="https://oj.akioi.ml:8200/submission/562">#562（优化后）<i class="fa fa-external-link"></i></span>。</li>
+<li><p><strong>Shoup 模乘算法。</strong></p>
+<p>施工中</p></li>
+<li><p>不封装，不用 <code>vector</code>。</p>
+<p>优化效果：没试过，咕咕咕。</p>
+<p>提交记录：<span class="math inline">\(\tan90^\circ\)</span></p></li>
 </ol>
 <h1 id="具体实现">具体实现</h1>
 <h2 id="预处理原根">预处理原根</h2>
@@ -417,6 +430,11 @@ Analytics"></a></div></noscript>
 <li>如果 <span class="math inline">\(R\ge p\)</span>，那么 <span class="math inline">\(R\gets R-p\)</span></li>
 </ol>
 <p>注：<span class="math inline">\(W\)</span> 是不变的。这对 NTT 是合理的，因为每次变换使用的是相同的原根。</p>
+<p><span class="math inline">\(W&#39;\)</span> 是 <span class="math inline">\(W/p\)</span> 的近似，<span class="math inline">\(Q\)</span> 是 <span class="math inline">\(WT/p\)</span> 的近似。</p>
+<p>可以证明 <span class="math inline">\(WT-Qp\in[0,2p)\)</span>。所以第二行中计算的 <span class="math inline">\(R\)</span> 正好是 <span class="math inline">\(WT-Qp\)</span>。最后一行将它调整到了 <span class="math inline">\([0,p)\)</span>。</p>
+<p>证明：因为 <span class="math inline">\(p\le\beta/2\)</span>，所以我们有 <span class="math inline">\(0\le\frac{W\beta}p-W&#39;&lt;1,0\le\frac{W&#39;T}\beta-Q&lt;1\)</span>。</p>
+<p>将上式同乘 <span class="math inline">\(Tp/\beta\)</span> 和 <span class="math inline">\(p\)</span> 然后相加，我们可以得到：<span class="math inline">\(0\le WT-Qp&lt;2p\)</span>。</p>
+<p>即，<span class="math inline">\(Q\)</span> 要么等于商，要么等于商 <span class="math inline">\(+1\)</span>。</p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
     </div>
 
